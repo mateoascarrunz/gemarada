@@ -1,0 +1,12 @@
+export { Header } from "./header";
+export { Hero } from "./hero";
+export { Benefits } from "./benefits";
+export { Services } from "./services";
+export { HowItWorks } from "./how-it-works";
+export { Pricing } from "./pricing";
+export { Trust } from "./trust";
+export { IdealClients } from "./ideal-clients";
+export { Testimonials } from "./testimonials";
+export { Faq } from "./faq";
+export { Contact } from "./contact";
+export { Footer } from "./footer";
