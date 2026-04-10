@@ -59,7 +59,7 @@ export function Hero() {
                   <p className="text-xs uppercase tracking-[0.28em] text-[var(--color-accent-cool)]">Consultora Senior</p>
                   <h2 className="font-display text-3xl font-semibold text-white">Gema</h2>
                   <p className="max-w-sm text-sm leading-7 text-[var(--color-muted)]">
-                    Reemplaza esta imagen por un retrato profesional vertical, cálido y luminoso para reforzar confianza desde el primer vistazo.
+                    Especialista en organización administrativa y gestión gastronómica, con más de 30 años de experiencia optimizando operaciones, costos y estructura de negocios.
                   </p>
                   <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.07] px-3 py-2 text-sm text-white">
                     <BadgeCheck className="h-4 w-4 text-[var(--color-accent)]" />
