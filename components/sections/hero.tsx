@@ -69,7 +69,7 @@ export function Hero() {
 
                 <div className="overflow-hidden rounded-[1.8rem] border border-white/10 bg-[rgba(255,255,255,0.08)]">
                   <Image
-                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80"
+                    src="/images/gema.jpg"
                     alt="Retrato de referencia para Gema"
                     width={900}
                     height={1200}
