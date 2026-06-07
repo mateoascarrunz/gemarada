@@ -14,10 +14,10 @@ export function About() {
                 <Image
                   src={about.image}
                   alt={about.imageAlt}
-                  width={800}
-                  height={1000}
+                  width={1402}
+                  height={1122}
                   sizes="(min-width: 1024px) 24rem, 90vw"
-                  className="h-[420px] w-full rounded-[1.4rem] object-cover sm:h-[480px]"
+                  className="h-[420px] w-full rounded-[1.4rem] object-cover object-center sm:h-[480px]"
                 />
               </figure>
             </div>

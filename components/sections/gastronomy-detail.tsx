@@ -13,7 +13,11 @@ export function GastronomyDetail() {
       <Container>
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
           <div className="lg:sticky lg:top-28 lg:self-start">
-            <SceneFrame src={gastronomyDetail.image} alt={gastronomyDetail.imageAlt} />
+            <SceneFrame
+              src={gastronomyDetail.image}
+              alt={gastronomyDetail.imageAlt}
+              sizes="(min-width: 1024px) 28rem, 90vw"
+            />
           </div>
 
           <div>

@@ -31,7 +31,7 @@ const professionalServiceLd = {
   name: brand.name,
   alternateName: brand.fullName,
   url: "https://gemarada.com",
-  image: "https://gemarada.com/images/krisna-portrait-hero.jpg",
+  image: "https://gemarada.com/images/gema.jpg",
   description:
     "Consultoría en administración gastronómica y contabilidad general remota: optimización de recursos, costos de recetas, análisis de menús, inventarios y reportes claros para restaurantes, cafés, chefs, caterings y pequeños negocios.",
   areaServed: "Servicio remoto",

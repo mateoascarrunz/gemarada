@@ -1,3 +1,4 @@
+import { Award } from "lucide-react";
 import {
   featuredCase,
   selectedHighlights,
@@ -7,7 +8,6 @@ import {
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { SceneFrame } from "@/components/ui/scene-frame";
 
 export function Trajectory() {
   return (
@@ -81,21 +81,25 @@ export function Trajectory() {
           <span aria-hidden className="h-px flex-1 bg-[var(--color-line)]" />
         </div>
 
-        {/* Featured case — image-led split */}
+        {/* Featured case — compact, text-led module with a gold seal emblem (no photo) */}
         <Reveal>
-          <div className="mt-10 overflow-hidden rounded-[1.75rem] border border-[var(--color-line)] bg-[var(--color-ivory)] shadow-[var(--shadow-card)]">
-            <div className="grid items-center gap-8 p-6 sm:p-8 lg:grid-cols-[0.95fr_1.05fr] lg:gap-12 lg:p-10">
-              <SceneFrame
-                src={featuredCase.image}
-                alt={featuredCase.imageAlt}
-                aspect="aspect-[5/4]"
-              />
+          <div className="relative mx-auto mt-10 max-w-3xl overflow-hidden rounded-[1.75rem] border border-[var(--color-gold)]/35 bg-[var(--color-ivory)] p-7 shadow-[var(--shadow-card)] sm:p-9">
+            <div
+              aria-hidden
+              className="absolute -right-12 -top-12 h-36 w-36 rounded-full bg-[radial-gradient(circle,rgba(169,119,46,0.18),transparent_70%)]"
+            />
+            <div className="relative flex flex-col gap-6 sm:flex-row sm:items-start sm:gap-7">
+              <span
+                aria-hidden
+                className="inline-flex h-16 w-16 shrink-0 items-center justify-center rounded-full border border-[var(--color-gold)]/40 bg-[var(--color-gold-tint)] text-[var(--color-gold-strong)] shadow-[var(--shadow-card)]"
+              >
+                <Award className="h-7 w-7" />
+              </span>
               <div>
-                <p className="mb-3 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-[var(--color-gold-strong)]">
-                  <span aria-hidden className="h-px w-6 bg-current opacity-60" />
+                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--color-gold-strong)]">
                   {featuredCase.eyebrow}
                 </p>
-                <h3 className="font-display text-2xl font-semibold leading-tight text-[var(--color-heading)] sm:text-[2rem]">
+                <h3 className="mt-2 font-display text-2xl font-semibold leading-tight text-[var(--color-heading)] sm:text-[1.9rem]">
                   {featuredCase.name}
                 </h3>
                 <div className="mt-3 flex flex-wrap items-center gap-3">

@@ -83,10 +83,10 @@ export function Hero() {
             <div className="absolute -inset-4 -z-10 rounded-[2.4rem] bg-[radial-gradient(circle_at_30%_20%,rgba(169,119,46,0.16),transparent_60%)]" />
             <figure className="group relative overflow-hidden rounded-[1.75rem] border border-[var(--color-line)] bg-[var(--color-ivory)] p-2 shadow-[var(--shadow-soft)] transition-transform duration-500 ease-out hover:-translate-y-1">
               <Image
-                src="/images/krisna-portrait-hero.jpg"
-                alt={`Retrato de ${brand.fullName}, ${brand.role.toLowerCase()}`}
-                width={900}
-                height={1100}
+                src="/images/gema.jpg"
+                alt={`Retrato profesional de ${brand.fullName}`}
+                width={1402}
+                height={1122}
                 priority
                 sizes="(min-width: 1024px) 28rem, (min-width: 640px) 24rem, 90vw"
                 className="h-[440px] w-full rounded-[1.4rem] object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.03] sm:h-[520px]"

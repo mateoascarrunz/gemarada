@@ -177,8 +177,8 @@ export const services: {
     anchor: "#consultoria-gastronomica",
     icon: ChefHat,
     track: "Operación y rentabilidad",
-    image: "/images/gastronomia-consultoria.svg",
-    imageAlt: "Consultoría en administración gastronómica: costos, inventarios y procesos",
+    image: "/images/gema-3.jpg",
+    imageAlt: "Krisna Gema Rada Rodríguez en un entorno gastronómico",
     eyebrow: "Servicio 1",
     title: "Administración gastronómica",
     forWho: "Para restaurantes, cafés, chefs, caterings y emprendedores con buena cocina.",
@@ -227,8 +227,8 @@ export const gastronomyDetail = {
     "Apoyo el arte culinario ocupándome del lado administrativo: orden, control y estructura, de forma simple y práctica.",
   quote:
     "Muchos chefs tienen el talento, la comida y el sueño. Lo que falta es alguien que ponga orden en los números.",
-  image: "/images/gastronomia-consultoria.svg",
-  imageAlt: "Costos, inventarios y procesos ordenados para un negocio gastronómico",
+  image: "/images/gema-3.jpg",
+  imageAlt: "Krisna Gema Rada Rodríguez en un entorno gastronómico",
   price: "USD 10",
   pricePeriod: "por hora",
   features: [
@@ -380,13 +380,11 @@ export const trajectoryEras: { range: string; title: string; summary: string }[]
 
 export const featuredCase = {
   eyebrow: "Caso destacado",
-  name: "Gastro Suisse · Restaurant Chalet La Suisse",
-  label: "Gerencia y crecimiento operativo",
+  name: "Gastro Suisse S.A. / Restaurant Chalet La Suisse",
+  label: "Gerencia administrativa y general",
   era: "1991–2022",
   description:
-    "Recuperación administrativa, orden contable y, más tarde, gerencia general: desarrollo del negocio, optimización de recursos, fidelización de clientes, posicionamiento de marca y acompañamiento en la transición del negocio.",
-  image: "/images/trayectoria-gastronomica.svg",
-  imageAlt: "Gerencia general y administrativa en Chalet La Suisse"
+    "Gerencia administrativa y general en una operación gastronómica de alto nivel, con foco en orden operativo, optimización de recursos, fidelización de clientes, excelencia en servicio, posicionamiento y acompañamiento durante una etapa clave de transición empresarial."
 };
 
 export const selectedHighlights: { name: string; label: string; detail: string }[] = [
@@ -484,8 +482,13 @@ export const about = {
     { icon: HeartHandshake, label: "Trato humano y cercano" },
     { icon: ShieldCheck, label: "Confidencialidad total" }
   ],
-  image: "/images/krisna-portrait-about.jpg",
-  imageAlt: "Retrato de Krisna Gema Rada Rodríguez"
+  image: "/images/gema-2.jpg",
+  imageAlt: "Krisna Gema Rada Rodríguez asesorando en un contexto profesional"
+};
+
+export const methodImage = {
+  src: "/images/gema-2.jpg",
+  alt: "Krisna Gema Rada Rodríguez asesorando en un contexto profesional"
 };
 
 /* -------------------------------------------------------------------------- */

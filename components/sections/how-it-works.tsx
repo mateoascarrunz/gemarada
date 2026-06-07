@@ -1,7 +1,8 @@
-import { ctaLabel, steps, waMessages, whatsappLink } from "@/lib/data";
+import { ctaLabel, methodImage, steps, waMessages, whatsappLink } from "@/lib/data";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { SceneFrame } from "@/components/ui/scene-frame";
 import { ButtonLink } from "@/components/ui/button-link";
 
 export function HowItWorks() {
@@ -11,12 +12,22 @@ export function HowItWorks() {
       className="scroll-mt-24 bg-[var(--color-espresso)] py-20 text-[var(--color-on-dark)] sm:py-24"
     >
       <Container>
-        <SectionHeading
-          tone="dark"
-          eyebrow="Cómo trabajamos"
-          title="Un método simple para ordenar tu negocio sin sumar carga a tu agenda."
-          description="Todo es remoto, cercano y fácil de sostener. Empezamos por entender tu negocio y avanzamos a tu ritmo."
-        />
+        <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
+          <SectionHeading
+            tone="dark"
+            eyebrow="Cómo trabajamos"
+            title="Un método simple para ordenar tu negocio sin sumar carga a tu agenda."
+            description="Todo es remoto, cercano y fácil de sostener. Empezamos por entender tu negocio y avanzamos a tu ritmo."
+          />
+          <Reveal delay={120}>
+            <SceneFrame
+              src={methodImage.src}
+              alt={methodImage.alt}
+              aspect="aspect-[5/4]"
+              sizes="(min-width: 1024px) 30rem, 90vw"
+            />
+          </Reveal>
+        </div>
 
         {/* Mobile / tablet: vertical left rail with gold nodes */}
         <ol className="mt-12 space-y-8 border-l border-[var(--color-on-dark-line)] pl-8 lg:hidden">
