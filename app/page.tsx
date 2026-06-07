@@ -12,12 +12,13 @@ import {
   Hero,
   HowItWorks,
   IdealClients,
+  MobileCta,
+  Outcomes,
   Pricing,
   Problem,
-  Services,
-  Testimonials
+  Services
 } from "@/components/sections";
-import { brand, contact } from "@/lib/data";
+import { brand, contact, faqs } from "@/lib/data";
 
 export const metadata: Metadata = {
   alternates: {
@@ -25,23 +26,25 @@ export const metadata: Metadata = {
   }
 };
 
-const jsonLd = {
+const professionalServiceLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   name: brand.name,
   alternateName: brand.fullName,
   url: "https://gemarada.com",
+  image: "https://gemarada.com/images/krisna-portrait-hero.jpg",
   description:
-    "Consultoría en administración gastronómica y contabilidad general remota: costeo de recetas, análisis de menú, control de inventarios y reportes claros para restaurantes, cafeterías y pequeños negocios.",
+    "Consultoría en administración gastronómica y contabilidad general remota: optimización de recursos, costos de recetas, análisis de menús, inventarios y reportes claros para restaurantes, cafés, chefs, caterings y pequeños negocios.",
   areaServed: "Servicio remoto",
   knowsAbout: [
-    "consultoría gastronómica",
-    "costeo de recetas",
-    "análisis de menú",
-    "control de costos para restaurantes",
-    "contabilidad general remota",
+    "administración gastronómica",
+    "costos de recetas",
+    "análisis de menús",
+    "optimización de recursos",
     "inventarios computarizados",
-    "contabilidad para pequeños negocios"
+    "contabilidad general remota",
+    "Balance General",
+    "Estado de Resultados"
   ],
   founder: {
     "@type": "Person",
@@ -64,8 +67,6 @@ const jsonLd = {
       {
         "@type": "Offer",
         name: "Consultoría en administración gastronómica",
-        price: "10",
-        priceCurrency: "USD",
         priceSpecification: {
           "@type": "UnitPriceSpecification",
           price: "10",
@@ -76,8 +77,6 @@ const jsonLd = {
       {
         "@type": "Offer",
         name: "Contabilidad general remota",
-        price: "80",
-        priceCurrency: "USD",
         priceSpecification: {
           "@type": "UnitPriceSpecification",
           price: "80",
@@ -89,14 +88,31 @@ const jsonLd = {
   }
 };
 
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer
+    }
+  }))
+};
+
 export default function Home() {
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(professionalServiceLd) }}
       />
-      <main className="relative overflow-x-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
+      />
+      <main className="relative overflow-x-hidden pb-20 lg:pb-0">
         <Header />
         <Hero />
         <AuthorityStrip />
@@ -107,13 +123,14 @@ export default function Home() {
         <AccountingDetail />
         <HowItWorks />
         <CaseStudies />
-        <Testimonials />
+        <Outcomes />
         <About />
         <Pricing />
         <Faq />
         <Contact />
         <Footer />
       </main>
+      <MobileCta />
     </>
   );
 }

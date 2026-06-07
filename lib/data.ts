@@ -1,15 +1,17 @@
 import {
   Boxes,
+  Building2,
+  BriefcaseBusiness,
   CalendarRange,
+  Calculator,
   ChefHat,
   ClipboardCheck,
-  ClipboardList,
   Coffee,
+  Eye,
   FileSpreadsheet,
+  Globe,
   HeartHandshake,
-  Lightbulb,
   LineChart,
-  Lock,
   type LucideIcon,
   Notebook,
   ReceiptText,
@@ -20,7 +22,8 @@ import {
   Store,
   TrendingUp,
   UsersRound,
-  UtensilsCrossed
+  UtensilsCrossed,
+  Wine
 } from "lucide-react";
 
 /* -------------------------------------------------------------------------- */
@@ -31,7 +34,8 @@ export const brand = {
   name: "Krisna Gema Rada",
   fullName: "Krisna Gema Rada Rodríguez",
   role: "Consultora senior en administración gastronómica y contabilidad general remota",
-  shortRole: "Administración gastronómica y contabilidad remota",
+  experienceClaim:
+    "Más de 30 años de experiencia en administración, gastronomía, contabilidad y atención al cliente.",
   monogram: "K"
 };
 
@@ -39,7 +43,7 @@ export const contact = {
   whatsappDisplay: "+591 65179887",
   whatsappNumber: "59165179887",
   email: "kgemarr@gmail.com",
-  location: "Bolivia · Servicio remoto para toda Latinoamérica"
+  location: "Bolivia · Atención remota"
 };
 
 export function whatsappLink(message: string) {
@@ -47,13 +51,12 @@ export function whatsappLink(message: string) {
 }
 
 export const waMessages = {
-  general: "Hola Krisna, vi tu sitio y quiero más información sobre tus servicios.",
+  general: "Hola Krisna, vi tu sitio y me gustaría conversar sobre cómo ordenar mi negocio.",
   consulting:
     "Hola Krisna, me interesa tu consultoría en administración gastronómica. ¿Podemos conversar?",
   accounting:
     "Hola Krisna, me interesa tu servicio de contabilidad general remota. ¿Podemos conversar?",
-  diagnosis:
-    "Hola Krisna, quiero una conversación inicial para ordenar los números de mi negocio."
+  diagnosis: "Hola Krisna, quiero ordenar los números de mi negocio. ¿Cuándo podemos hablar?"
 };
 
 /* -------------------------------------------------------------------------- */
@@ -69,23 +72,13 @@ export const navigation = [
 ];
 
 /* -------------------------------------------------------------------------- */
-/* Hero                                                                        */
-/* -------------------------------------------------------------------------- */
-
-export const heroHighlights = [
-  "Costos y menú bajo control",
-  "Reportes mensuales claros",
-  "Acompañamiento cercano y remoto"
-];
-
-/* -------------------------------------------------------------------------- */
 /* Authority / trust strip                                                     */
 /* -------------------------------------------------------------------------- */
 
 export const authorityStrip: { label: string; detail: string }[] = [
-  { label: "Consultora senior", detail: "Gastronomía + contabilidad" },
-  { label: "100% remoto", detail: "Trabaja desde donde estés" },
-  { label: "Enfoque práctico", detail: "Decisiones, no teoría" },
+  { label: "+30 años", detail: "Gastronomía y administración" },
+  { label: "Ojo clínico", detail: "Veo dónde se pierde el negocio" },
+  { label: "100% remoto", detail: "Por WhatsApp y correo" },
   { label: "Confidencialidad", detail: "Acuerdo antes de empezar" }
 ];
 
@@ -94,24 +87,24 @@ export const authorityStrip: { label: string; detail: string }[] = [
 /* -------------------------------------------------------------------------- */
 
 export const problemIntro = {
-  eyebrow: "El problema real",
-  title: "Tu negocio vende, pero los números viven en el caos.",
+  eyebrow: "Lo que veo todos los días",
+  title: "Tienes talento y buenas ideas. Lo que muchas veces falta es orden.",
   description:
-    "La mayoría de restaurantes, cafeterías y pequeños negocios no fracasan por falta de clientes, sino por falta de orden. Sin control de costos ni reportes claros, las decisiones se toman a ciegas."
+    "Muchos chefs y dueños de negocio cocinan increíble, sueñan en grande y trabajan sin parar. Pero cuando falta administración, el negocio sufre: los costos se vuelven invisibles, los recursos se pierden y las decisiones se toman a ciegas."
 };
 
 export const problemPoints: { icon: LucideIcon; title: string; description: string }[] = [
   {
     icon: ReceiptText,
-    title: "No sabes cuánto cuesta realmente cada plato",
+    title: "No sabes qué plato deja margen",
     description:
-      "Sin costeo de recetas, fijas precios por intuición y trabajas duro sin saber qué te deja ganancia."
+      "Sin costos de recetas, fijas precios por intuición y trabajas mucho sin saber qué te deja ganancia."
   },
   {
     icon: Boxes,
-    title: "El inventario y las compras se te escapan",
+    title: "Los recursos se pierden sin que lo notes",
     description:
-      "Compras de más, hay mermas que no ves y el dinero se va en fugas difíciles de detectar."
+      "Compras de más, mermas e insumos mal aprovechados: fugas difíciles de ver en el día a día."
   },
   {
     icon: FileSpreadsheet,
@@ -120,11 +113,15 @@ export const problemPoints: { icon: LucideIcon; title: string; description: stri
       "Cumples con el fisco, pero no tienes una foto real de tu salud financiera para decidir."
   },
   {
-    icon: CalendarRange,
-    title: "No te queda tiempo para los números",
-    description: "Vives operando el día a día y la administración queda siempre para “después”."
+    icon: UsersRound,
+    title: "El equipo trabaja sin estructura",
+    description:
+      "Sin manuales ni procesos claros, todo depende de la memoria y del esfuerzo del momento."
   }
 ];
+
+export const problemClosing =
+  "La buena noticia: todo esto se ordena. Y cuando la administración acompaña al talento culinario, el negocio respira mejor.";
 
 /* -------------------------------------------------------------------------- */
 /* Audience / ideal clients                                                     */
@@ -132,11 +129,11 @@ export const problemPoints: { icon: LucideIcon; title: string; description: stri
 
 export const idealClients: { icon: LucideIcon; label: string }[] = [
   { icon: UtensilsCrossed, label: "Restaurantes que quieren ordenar costos y operación" },
-  { icon: Coffee, label: "Cafeterías que buscan procesos más rentables" },
+  { icon: Coffee, label: "Cafés y cafeterías que buscan procesos más rentables" },
   { icon: ChefHat, label: "Chefs y emprendedores gastronómicos" },
   { icon: Salad, label: "Servicios de catering y eventos" },
   { icon: Store, label: "Pequeños negocios sin tiempo para sus números" },
-  { icon: LineChart, label: "Personas que quieren entender su salud financiera real" }
+  { icon: LineChart, label: "Personas que quieren entender su situación financiera real" }
 ];
 
 /* -------------------------------------------------------------------------- */
@@ -162,11 +159,15 @@ export const services: {
     eyebrow: "Servicio 1",
     title: "Consultoría en administración gastronómica",
     description:
-      "Orden, rentabilidad y estructura para tu operación gastronómica. Trabajamos sobre lo que de verdad mueve tu ganancia: costos, menú, inventarios y procesos.",
+      "Un buen negocio gastronómico no es solo buena comida. También necesita administración, costos claros, inventarios, equipos capacitados, procesos y decisiones basadas en información real.",
     price: "USD 10",
     pricePeriod: "por hora",
     ctaMessage: waMessages.consulting,
-    highlights: ["Optimización de recursos", "Análisis de menú", "Costeo de recetas"]
+    highlights: [
+      "Optimización de recursos y proveedores",
+      "Análisis de menús y costos de recetas",
+      "Inventarios y manuales de procesos"
+    ]
   },
   {
     id: "contabilidad",
@@ -175,14 +176,14 @@ export const services: {
     eyebrow: "Servicio 2",
     title: "Contabilidad general remota",
     description:
-      "Claridad financiera para personas, emprendedores y pequeños negocios. Un registro ordenado de tu patrimonio y tus resultados, más allá de lo tributario.",
+      "No se trata de sumar complejidad, sino de darte claridad: de dónde entra el dinero, a dónde va, qué se puede optimizar y cómo se ve tu situación financiera real.",
     price: "USD 80",
     pricePeriod: "por mes",
     ctaMessage: waMessages.accounting,
     highlights: [
-      "Activos, pasivos, ingresos y egresos",
-      "Reportes mensuales y anuales",
-      "Confidencialidad garantizada"
+      "Balance General y Estado de Resultados",
+      "Reportes mensuales y anuales incluidos",
+      "Yo hago el trabajo: no aprendes ningún sistema"
     ]
   }
 ];
@@ -192,26 +193,29 @@ export const services: {
 /* -------------------------------------------------------------------------- */
 
 export const gastronomyDetail = {
-  eyebrow: "Consultoría gastronómica",
-  title: "Convierte tu cocina en un negocio rentable y ordenado.",
+  eyebrow: "Consultoría en administración gastronómica",
+  title: "Cuando la administración acompaña al talento, el negocio respira mejor.",
   description:
-    "Pensado para restaurantes, cafeterías, chefs independientes, catering y nuevos proyectos. Aterrizamos cada recomendación en acciones simples que puedes aplicar de inmediato.",
+    "Para restaurantes, cafés, chefs, caterings y emprendedores gastronómicos que necesitan orden, control y estructura. Apoyo el arte culinario ocupándome del lado administrativo, de forma simple y práctica.",
+  quote:
+    "Muchos chefs tienen el talento, la comida y el sueño. Lo que necesitan es que alguien ponga orden en los números.",
   price: "USD 10",
   pricePeriod: "por hora",
   features: [
     {
       icon: TrendingUp,
       title: "Optimización de recursos",
-      description: "Reducimos fugas en compras, mermas y tiempos para que cada peso rinda más."
+      description:
+        "Reviso instalaciones, insumos, equipo humano y proveedores para que cada recurso rinda más."
     },
     {
       icon: Salad,
-      title: "Análisis de menú",
-      description: "Identificamos los platos que dan ganancia y los que te restan, para ajustar tu carta."
+      title: "Análisis de menús",
+      description: "Identifico qué platos dejan margen y cuáles te restan, para enfocar tu carta."
     },
     {
       icon: ClipboardCheck,
-      title: "Costeo de recetas",
+      title: "Costos de recetas",
       description: "Sabrás cuánto cuesta cada plato y a qué precio realmente conviene venderlo."
     },
     {
@@ -221,13 +225,13 @@ export const gastronomyDetail = {
     },
     {
       icon: Notebook,
-      title: "Manuales de procesos simples",
+      title: "Manuales simples de procesos",
       description: "Documentamos tus rutinas clave para que el negocio no dependa de la memoria."
     },
     {
       icon: Sparkles,
-      title: "Acompañamiento para expandir",
-      description: "Te apoyo para crecer o abrir nuevos puntos con bases sólidas y decisiones claras."
+      title: "Expansión del negocio",
+      description: "Te acompaño para crecer o abrir nuevos puntos con bases sólidas y decisiones claras."
     }
   ]
 };
@@ -238,34 +242,36 @@ export const gastronomyDetail = {
 
 export const accountingDetail = {
   eyebrow: "Contabilidad general remota",
-  title: "Entiende tu salud financiera real, mes a mes.",
+  title: "Entiende tu situación financiera real, mes a mes.",
   description:
-    "Para personas, emprendedores y pequeños negocios que necesitan claridad financiera. Llevamos un registro ordenado de tu patrimonio y tus resultados con seguimiento cercano.",
+    "Para personas, emprendedores y pequeños negocios que no tienen tiempo de llevar sus cuentas. Yo hago el trabajo por ti: no necesitas comprar ni aprender ningún sistema contable.",
   price: "USD 80",
   pricePeriod: "por mes",
   includes: [
     {
       icon: Scale,
       title: "Registro completo",
-      description: "Activos, pasivos, ingresos, egresos y cuentas de ajuste, ordenados con criterio."
+      description:
+        "Llevo tus activos, pasivos, ingresos, egresos y cuentas de ajuste, ordenados con criterio."
     },
     {
       icon: FileSpreadsheet,
-      title: "Reportes mensuales y anuales",
-      description: "Recibes informes claros para entender tu situación y decidir con confianza."
+      title: "Balance y resultados",
+      description: "Recibes Balance General y Estado de Resultados para ver tu situación con claridad."
     },
     {
-      icon: Lock,
-      title: "Confidencialidad garantizada",
-      description: "Firmamos un acuerdo de confidencialidad antes de recibir tu información."
+      icon: CalendarRange,
+      title: "Reportes incluidos",
+      description: "Informes mensuales y anuales, sin costo mensual adicional."
     },
     {
       icon: HeartHandshake,
       title: "Acompañamiento cercano",
-      description: "No estás sola en el proceso: cuentas con seguimiento humano y respuestas claras."
+      description: "Te acompaño en todo el proceso, por WhatsApp o correo, con respuestas claras."
     }
   ],
-  note: "Importante: este servicio brinda claridad y orden financiero, y no reemplaza tus obligaciones tributarias ni la presentación de impuestos."
+  confidentiality: "El trabajo comienza después de firmar un acuerdo de confidencialidad.",
+  note: "Este servicio no reemplaza tus obligaciones tributarias ni la contabilidad fiscal: las complementa, ayudándote a entender tu salud financiera real."
 };
 
 /* -------------------------------------------------------------------------- */
@@ -276,58 +282,142 @@ export const steps = [
   {
     number: "01",
     title: "Conversación inicial",
-    description: "Hablamos de tu negocio, tus dolores y tus metas para definir el mejor punto de partida."
+    description: "Hablamos de tu negocio, lo que te preocupa y lo que quieres lograr. Sin compromiso."
   },
   {
     number: "02",
     title: "Acuerdo y confidencialidad",
-    description: "Definimos el alcance y firmamos el acuerdo de confidencialidad antes de recibir tu información."
+    description:
+      "Definimos el alcance y firmamos un acuerdo de confidencialidad antes de recibir tu información."
   },
   {
     number: "03",
     title: "Orden y registro",
-    description: "Organizo tus costos, inventarios o cuentas y convierto el desorden en información útil."
+    description: "Organizo tus costos, inventarios o cuentas y convierto el desorden en información clara."
   },
   {
     number: "04",
-    title: "Reportes y decisiones",
-    description: "Recibes reportes claros y recomendaciones prácticas, con seguimiento cercano y constante."
+    title: "Reportes y recomendaciones",
+    description:
+      "Recibes reportes claros y recomendaciones prácticas, con seguimiento cercano y constante."
   }
 ];
 
 /* -------------------------------------------------------------------------- */
-/* Case studies / selected experience                                          */
-/* (Representative scenarios — editables con casos reales)                      */
+/* Selected experience (real, factual — no metrics, no exaggeration)           */
 /* -------------------------------------------------------------------------- */
 
-export const caseStudies: {
+export const experienceIntro = {
+  eyebrow: "Experiencia seleccionada",
+  title: "Una trayectoria construida en cocinas, barras, salones y oficinas reales.",
+  description:
+    "Más de tres décadas acompañando proyectos gastronómicos y administrativos, desde la puesta en marcha hasta la operación del día a día."
+};
+
+export const selectedExperience: {
   icon: LucideIcon;
-  sector: string;
-  challenge: string;
-  outcome: string;
+  name: string;
+  scope: string;
+  description: string;
 }[] = [
   {
-    icon: UtensilsCrossed,
-    sector: "Restaurante familiar",
-    challenge: "Vendía bien pero no sabía qué platos dejaban ganancia ni a dónde se iba el dinero.",
-    outcome: "Costeo de recetas y análisis de menú para enfocar la carta en los platos más rentables."
+    icon: Calculator,
+    name: "Chef independiente · Querétaro, México",
+    scope: "Contabilidad de catering",
+    description: "Organización de los registros contables de los movimientos de catering."
   },
   {
-    icon: Coffee,
-    sector: "Cafetería de especialidad",
-    challenge: "Compras sin control e inventario impreciso que generaban mermas constantes.",
-    outcome: "Inventario computarizado y procesos simples para comprar mejor y reducir pérdidas."
+    icon: UtensilsCrossed,
+    name: "La Pequeña de Alfredo",
+    scope: "Apertura integral",
+    description:
+      "Remodelación, compra de equipo, nombre e imagen, contratación y capacitación del personal, carta de bar, manuales de procesos, apertura, captación y fidelización de clientes."
+  },
+  {
+    icon: Globe,
+    name: "Catering para embajadas y cuerpo diplomático",
+    scope: "Con el Chef Marco Bonifaz",
+    description:
+      "Coordinación de eventos, acuerdos con clientes, montaje, organización de buffet y mesas, degustaciones, decoración y servicio."
   },
   {
     icon: Store,
-    sector: "Emprendimiento pequeño",
-    challenge: "Contabilidad solo para impuestos, sin una foto real de su situación financiera.",
-    outcome: "Contabilidad general remota con reportes mensuales para decidir con claridad."
+    name: "Plaza Gastronómica El Bosque",
+    scope: "Operación y optimización",
+    description: "Análisis de recursos, capacitación de personal, optimización y captación de clientes."
+  },
+  {
+    icon: Building2,
+    name: "Gastro Suisse · Restaurant Chalet La Suisse",
+    scope: "Gerencia general y administrativa",
+    description:
+      "Desarrollo del negocio, optimización de recursos, fidelización, excelencia en el servicio, posicionamiento y participación en el proceso de transición del negocio."
+  },
+  {
+    icon: Wine,
+    name: "La Gitana Bar-Restaurante",
+    scope: "Creación de concepto",
+    description: "Concepto, ambientación, cartas, contratación, capacitación y apoyo operativo."
+  },
+  {
+    icon: ChefHat,
+    name: "Rock and Fellers",
+    scope: "Implementación de franquicia",
+    description:
+      "Implementación de una franquicia argentina en Bolivia: sistemas, capacitación de cocina, bar y salón, y excelencia en el servicio."
+  },
+  {
+    icon: Scale,
+    name: "Restaurant La Mostaza · Chalet La Suisse (etapa inicial)",
+    scope: "Orden financiero",
+    description:
+      "Registros contables, control de inventarios y recuperación tras una pérdida económica."
   }
 ];
 
-export const caseStudiesNote =
-  "Escenarios representativos del tipo de trabajo de Krisna. Esta sección está lista para reemplazarse con casos reales cuando los clientes lo autoricen.";
+/* -------------------------------------------------------------------------- */
+/* Outcomes — what changes with order (replaces fake testimonials)             */
+/* -------------------------------------------------------------------------- */
+
+export const outcomesIntro = {
+  eyebrow: "Con un proceso ordenado",
+  title: "Lo que cambia cuando tu negocio tiene orden.",
+  description:
+    "No se trata de más trabajo para ti, sino de más claridad para decidir. Esto es lo que sí puedes esperar."
+};
+
+export const outcomes: { icon: LucideIcon; title: string; description: string }[] = [
+  {
+    icon: ClipboardCheck,
+    title: "Sabes qué deja margen",
+    description: "Costos de recetas y análisis de menú para enfocar lo que sí es rentable."
+  },
+  {
+    icon: Eye,
+    title: "Ves a dónde se va el dinero",
+    description: "Sabrás qué gastos se repiten, qué recursos se pierden y dónde puedes optimizar."
+  },
+  {
+    icon: Notebook,
+    title: "Tu equipo tiene procesos claros",
+    description: "Manuales simples para que la operación no dependa de la memoria."
+  },
+  {
+    icon: FileSpreadsheet,
+    title: "Recibes reportes que entiendes",
+    description: "Balance General y Estado de Resultados claros para decidir con información real."
+  },
+  {
+    icon: LineChart,
+    title: "Conoces tu situación real",
+    description: "Más allá de los impuestos, entiendes la verdadera salud financiera de tu negocio."
+  },
+  {
+    icon: HeartHandshake,
+    title: "Ganas tiempo y tranquilidad",
+    description: "Yo me ocupo de los números; tú te enfocas en lo que amas hacer."
+  }
+];
 
 /* -------------------------------------------------------------------------- */
 /* About Krisna                                                                */
@@ -335,18 +425,41 @@ export const caseStudiesNote =
 
 export const about = {
   eyebrow: "Sobre Krisna",
-  title: "Experiencia senior con criterio práctico y trato humano.",
+  title: "Más de 30 años poniendo orden donde el día a día no deja tiempo para mirar.",
   paragraphs: [
-    "Soy Krisna Gema Rada, consultora especializada en administración gastronómica y contabilidad general remota. Acompaño a restaurantes, cafeterías, chefs, servicios de catering y pequeños negocios a poner orden en sus números y operar con más rentabilidad.",
-    "Mi enfoque es simple y cercano: traduzco la información dispersa de tu negocio en costos claros, inventarios ordenados y reportes que puedes entender. No te entrego teoría difícil de aplicar, sino decisiones concretas para tu día a día.",
-    "Todo el trabajo es remoto, con seguimiento constante y total confidencialidad. Mi objetivo es que dejes de improvisar y empieces a crecer con bases sólidas."
+    "Soy Krisna Gema Rada, consultora senior en administración gastronómica y contabilidad general remota. He trabajado en restaurantes, bares, caterings, administración, contabilidad, atención al cliente y operaciones, y conozco de cerca el esfuerzo que hay detrás de abrir y sostener un negocio.",
+    "Mi diferencia no es solo técnica. Tengo un ojo clínico para encontrar lo que no está funcionando: dónde se pierden recursos, qué procesos no están claros, qué costos no se ven y dónde el equipo necesita estructura.",
+    "Trabajo de forma simple, práctica y cercana, con total confidencialidad. Mi objetivo es que dejes de improvisar, entiendas tu situación real y tomes mejores decisiones para tu negocio."
   ],
   values: [
-    { icon: Lightbulb, label: "Criterio práctico" },
+    { icon: Eye, label: "Ojo clínico" },
     { icon: HeartHandshake, label: "Trato humano y cercano" },
     { icon: ShieldCheck, label: "Confidencialidad total" }
   ]
 };
+
+export const trustPoints: { icon: LucideIcon; title: string; description: string }[] = [
+  {
+    icon: BriefcaseBusiness,
+    title: "Experiencia real",
+    description: "Más de 30 años en gastronomía, administración, contabilidad y atención al cliente."
+  },
+  {
+    icon: Eye,
+    title: "Ojo clínico para el detalle",
+    description: "Encuentro dónde se pierden recursos y dónde el negocio puede mejorar."
+  },
+  {
+    icon: HeartHandshake,
+    title: "Atención humana y directa",
+    description: "Hablas conmigo, con seguimiento cercano y respuestas claras."
+  },
+  {
+    icon: ShieldCheck,
+    title: "Confidencialidad garantizada",
+    description: "Firmamos un acuerdo antes de recibir cualquier información de tu negocio."
+  }
+];
 
 /* -------------------------------------------------------------------------- */
 /* Pricing / investment                                                        */
@@ -371,13 +484,13 @@ export const pricingPlans: {
     title: "Administración gastronómica",
     price: "USD 10",
     period: "por hora",
-    description: "Ideal para ordenar costos, menú, inventarios y procesos a tu propio ritmo.",
+    description: "Ideal para ordenar recursos, menús, costos, inventarios y procesos a tu ritmo.",
     features: [
-      "Optimización de recursos",
-      "Análisis de menú y costeo de recetas",
+      "Optimización de recursos, insumos y proveedores",
+      "Análisis de menús y costos de recetas",
       "Inventarios computarizados",
-      "Manuales de procesos simples",
-      "Acompañamiento para expandir tu negocio"
+      "Manuales simples de procesos",
+      "Acompañamiento para expandir el negocio"
     ],
     ctaMessage: waMessages.consulting,
     featured: false
@@ -392,10 +505,10 @@ export const pricingPlans: {
     description: "Para tener claridad financiera continua, con reportes y seguimiento mensual.",
     features: [
       "Registro de activos, pasivos, ingresos y egresos",
-      "Cuentas de ajuste ordenadas",
+      "Balance General y Estado de Resultados",
       "Reportes mensuales y anuales incluidos",
       "Acuerdo de confidencialidad",
-      "Acompañamiento cercano y remoto"
+      "Yo hago el trabajo: no aprendes ningún sistema"
     ],
     ctaMessage: waMessages.accounting,
     featured: true
@@ -403,59 +516,7 @@ export const pricingPlans: {
 ];
 
 export const pricingNote =
-  "Sin sorpresas: defines el alcance en la conversación inicial. La contabilidad remota no reemplaza tus obligaciones tributarias.";
-
-/* -------------------------------------------------------------------------- */
-/* Trust points (why work with Krisna)                                         */
-/* -------------------------------------------------------------------------- */
-
-export const trustPoints: { icon: LucideIcon; title: string; description: string }[] = [
-  {
-    icon: ClipboardList,
-    title: "Visión práctica de negocio",
-    description: "Recomendaciones útiles para el día a día, no teorías difíciles de aplicar."
-  },
-  {
-    icon: HeartHandshake,
-    title: "Atención personal y directa",
-    description: "Hablas con Krisna y recibes seguimiento cercano, claro y humano."
-  },
-  {
-    icon: ShieldCheck,
-    title: "Confidencialidad garantizada",
-    description: "Firmamos un acuerdo antes de recibir cualquier información de tu negocio."
-  },
-  {
-    icon: UsersRound,
-    title: "Servicio 100% remoto",
-    description: "Trabajas con comodidad desde donde estés, por WhatsApp, llamadas y correo."
-  }
-];
-
-/* -------------------------------------------------------------------------- */
-/* Testimonials (editable placeholders)                                        */
-/* -------------------------------------------------------------------------- */
-
-export const testimonials = [
-  {
-    quote:
-      "Con Krisna dejamos de trabajar con información suelta. Ahora entendemos nuestros costos y decidimos con calma.",
-    name: "Cliente de restaurante",
-    role: "Testimonio editable"
-  },
-  {
-    quote:
-      "Su acompañamiento es cercano y muy claro. Nos ayudó a poner orden en compras, inventario y reportes.",
-    name: "Cliente de cafetería",
-    role: "Testimonio editable"
-  },
-  {
-    quote:
-      "Lo más valioso es que todo aterriza en acciones simples. Se nota la experiencia y el criterio.",
-    name: "Cliente emprendedor",
-    role: "Testimonio editable"
-  }
-];
+  "Definimos el alcance en una conversación inicial, sin compromiso. La contabilidad general remota complementa —no reemplaza— tus obligaciones tributarias.";
 
 /* -------------------------------------------------------------------------- */
 /* FAQ                                                                         */
@@ -465,31 +526,36 @@ export const faqs = [
   {
     question: "¿La contabilidad remota reemplaza mis impuestos?",
     answer:
-      "No. El servicio te da claridad y orden financiero —patrimonio, ingresos, egresos y reportes— pero no reemplaza tus obligaciones tributarias ni la presentación de impuestos."
+      "No. Complementa tu contabilidad fiscal: te ayuda a entender tu situación financiera real —patrimonio, ingresos, egresos, Balance General y Estado de Resultados—, pero no reemplaza tus obligaciones tributarias."
   },
   {
-    question: "¿Cómo cuidan la confidencialidad de mi información?",
+    question: "¿Tengo que comprar o aprender un sistema contable?",
     answer:
-      "Firmamos un acuerdo de confidencialidad antes de recibir cualquier dato de tu negocio. Tu información se maneja con total reserva."
+      "No. Yo hago el trabajo por ti. Tú me envías la información por WhatsApp o correo y yo te entrego los reportes ya ordenados."
   },
   {
-    question: "¿El servicio es totalmente remoto?",
+    question: "¿Los reportes mensuales y anuales tienen costo adicional?",
     answer:
-      "Sí. Trabajamos a distancia con contacto frecuente por WhatsApp, llamadas y correo, sin importar dónde estés."
+      "No. Están incluidos en la mensualidad de USD 80, sin cobros extra."
+  },
+  {
+    question: "¿Cómo cuidas la confidencialidad de mi información?",
+    answer:
+      "El trabajo comienza después de firmar un acuerdo de confidencialidad. Tu información se maneja con total reserva."
   },
   {
     question: "¿Cómo se cobra cada servicio?",
     answer:
-      "La consultoría en administración gastronómica es de USD 10 por hora y la contabilidad general remota es de USD 80 al mes. Definimos el alcance en la conversación inicial."
+      "La consultoría en administración gastronómica es de USD 10 por hora y la contabilidad general remota, USD 80 al mes. Definimos el alcance en la conversación inicial."
   },
   {
-    question: "¿Qué tipo de negocios pueden trabajar con Krisna?",
+    question: "¿Con qué negocios trabajas?",
     answer:
-      "Restaurantes, cafeterías, chefs independientes, servicios de catering, pequeños negocios y emprendedores que quieran ordenar sus números y crecer."
+      "Restaurantes, cafés, chefs, caterings, emprendedores y pequeños negocios que quieran ordenar sus números y crecer."
   },
   {
     question: "¿Por dónde empiezo?",
     answer:
-      "Escríbeme por WhatsApp para una conversación inicial. Conversamos sobre tu negocio y definimos juntos el mejor punto de partida."
+      "Escríbeme por WhatsApp para una conversación inicial, sin compromiso. Vemos tu caso y definimos el mejor punto de partida."
   }
 ];

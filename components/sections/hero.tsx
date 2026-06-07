@@ -1,86 +1,92 @@
 import Image from "next/image";
-import { BadgeCheck, Sparkles } from "lucide-react";
-import { brand, heroHighlights, waMessages, whatsappLink } from "@/lib/data";
+import Link from "next/link";
+import { ArrowRight, BadgeCheck, Sparkles } from "lucide-react";
+import { brand, services, waMessages, whatsappLink } from "@/lib/data";
 import { Container } from "@/components/ui/container";
 import { ButtonLink } from "@/components/ui/button-link";
 
 export function Hero() {
   return (
-    <section id="inicio" className="relative overflow-hidden pb-20 pt-10 sm:pb-24 sm:pt-14 lg:pb-32 lg:pt-20">
+    <section id="inicio" className="relative overflow-hidden pb-16 pt-12 sm:pb-20 sm:pt-16 lg:pb-28 lg:pt-20">
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-[-5rem] top-16 h-44 w-44 rounded-full bg-[rgba(242,191,159,0.16)] blur-3xl sm:h-60 sm:w-60" />
-        <div className="absolute right-[-3rem] top-28 h-48 w-48 rounded-full bg-[rgba(165,214,208,0.14)] blur-3xl sm:h-72 sm:w-72" />
+        <div className="absolute left-[-6rem] top-10 h-56 w-56 rounded-full bg-[rgba(169,119,46,0.1)] blur-3xl" />
+        <div className="absolute right-[-4rem] top-32 h-64 w-64 rounded-full bg-[rgba(111,107,65,0.08)] blur-3xl" />
       </div>
 
       <Container className="relative">
-        <div className="grid items-center gap-12 lg:grid-cols-[1.08fr_0.92fr] lg:gap-10">
+        <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.07] px-4 py-2 text-xs tracking-[0.24em] text-[var(--color-accent-cool)] uppercase backdrop-blur-md">
+            <p className="inline-flex items-center gap-2 rounded-full border border-[var(--color-line)] bg-[var(--color-ivory)] px-4 py-2 text-xs font-medium uppercase tracking-[0.2em] text-[var(--color-gold-strong)]">
               <Sparkles className="h-3.5 w-3.5" />
-              Consultora senior · {brand.shortRole}
-            </div>
-            <h1 className="mt-7 font-display text-5xl leading-[0.95] font-semibold tracking-[-0.03em] text-white sm:text-6xl lg:text-7xl">
-              Orden, rentabilidad y claridad para tu negocio gastronómico.
+              Consultora senior · +30 años de experiencia
+            </p>
+
+            <h1 className="mt-6 font-display text-5xl font-semibold leading-[0.98] tracking-[-0.02em] text-[var(--color-heading)] sm:text-6xl lg:text-7xl">
+              Orden y claridad para que tu negocio funcione mejor.
             </h1>
+
             <p className="mt-6 max-w-xl text-lg leading-8 text-[var(--color-muted)] sm:text-xl">
-              Ayudo a restaurantes, cafeterías, chefs y pequeños negocios a controlar sus costos,
-              entender sus números y crecer con bases sólidas. Consultoría gastronómica y
-              contabilidad general remota, con acompañamiento cercano.
+              Consultoría en administración gastronómica y contabilidad general remota para
+              restaurantes, cafés, chefs, caterings, emprendedores y pequeños negocios que necesitan
+              estructura, control y decisiones más claras.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <ButtonLink href={whatsappLink(waMessages.diagnosis)}>
-                Conversemos por WhatsApp
-              </ButtonLink>
+              <ButtonLink href={whatsappLink(waMessages.diagnosis)}>Escríbeme por WhatsApp</ButtonLink>
               <ButtonLink href="#servicios" variant="secondary">
                 Ver servicios
               </ButtonLink>
             </div>
 
-            <div className="mt-10 grid gap-4 sm:grid-cols-3">
-              {heroHighlights.map((item) => (
-                <div
-                  key={item}
-                  className="rounded-3xl border border-white/10 bg-white/[0.06] px-4 py-4 text-sm text-[var(--color-muted)] backdrop-blur-sm"
+            <div className="mt-10 grid gap-3 sm:grid-cols-2">
+              {services.map((service) => (
+                <Link
+                  key={service.id}
+                  href={service.anchor}
+                  className="group rounded-2xl border border-[var(--color-line)] bg-[var(--color-ivory)] p-4 shadow-[var(--shadow-card)] hover:-translate-y-0.5 hover:border-[var(--color-gold)]/40"
                 >
-                  {item}
-                </div>
+                  <div className="flex items-center gap-2 text-[var(--color-gold-strong)]">
+                    <service.icon className="h-4 w-4" />
+                    <span className="text-xs font-semibold uppercase tracking-[0.14em]">
+                      {service.id === "gastronomia" ? "Administración gastronómica" : "Contabilidad remota"}
+                    </span>
+                  </div>
+                  <p className="mt-2 flex items-baseline gap-1">
+                    <span className="font-display text-2xl font-semibold text-[var(--color-heading)]">
+                      {service.price}
+                    </span>
+                    <span className="text-sm text-[var(--color-muted)]">{service.pricePeriod}</span>
+                  </p>
+                  <span className="mt-1 inline-flex items-center gap-1 text-sm text-[var(--color-muted)] group-hover:text-[var(--color-gold-strong)]">
+                    Ver detalle <ArrowRight className="h-3.5 w-3.5" />
+                  </span>
+                </Link>
               ))}
             </div>
           </div>
 
-          <div className="relative mx-auto w-full max-w-xl">
-            <div className="absolute inset-x-10 -top-6 h-24 rounded-full bg-[rgba(242,191,159,0.12)] blur-3xl" />
-            <div className="relative overflow-hidden rounded-[2rem] border border-white/12 bg-[linear-gradient(180deg,rgba(255,255,255,0.14),rgba(255,255,255,0.06))] p-4 shadow-[var(--shadow-soft)] backdrop-blur-xl sm:p-5">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.18),transparent_42%)]" />
-              <div className="relative grid gap-4 sm:grid-cols-[1fr_auto] sm:items-end">
-                <div className="space-y-4 rounded-[1.6rem] border border-white/10 bg-[rgba(7,14,25,0.52)] p-5 backdrop-blur-md">
-                  <p className="text-xs uppercase tracking-[0.28em] text-[var(--color-accent-cool)]">
-                    Consultora senior
-                  </p>
-                  <h2 className="font-display text-3xl font-semibold text-white">Krisna Gema Rada</h2>
-                  <p className="max-w-sm text-sm leading-7 text-[var(--color-muted)]">
-                    Especialista en administración gastronómica y contabilidad general remota.
-                    Costos claros, inventarios ordenados y reportes que sí entiendes.
-                  </p>
-                  <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.07] px-3 py-2 text-sm text-white">
-                    <BadgeCheck className="h-4 w-4 text-[var(--color-accent)]" />
-                    Atención humana y confidencial
-                  </div>
-                </div>
-
-                <div className="overflow-hidden rounded-[1.8rem] border border-white/10 bg-[rgba(255,255,255,0.08)]">
-                  <Image
-                    src="/images/krisna-portrait-hero.jpg"
-                    alt="Retrato de Krisna Gema Rada, consultora en administración gastronómica y contabilidad"
-                    width={900}
-                    height={1200}
-                    priority
-                    className="h-[460px] w-full object-cover sm:h-[540px]"
-                  />
-                </div>
-              </div>
-            </div>
+          <div className="relative mx-auto w-full max-w-md">
+            <div className="absolute -inset-4 -z-10 rounded-[2.4rem] bg-[radial-gradient(circle_at_30%_20%,rgba(169,119,46,0.16),transparent_60%)]" />
+            <figure className="relative overflow-hidden rounded-[2rem] border border-[var(--color-line)] bg-[var(--color-ivory)] p-3 shadow-[var(--shadow-soft)]">
+              <Image
+                src="/images/krisna-portrait-hero.jpg"
+                alt={`Retrato de ${brand.fullName}, ${brand.role.toLowerCase()}`}
+                width={900}
+                height={1100}
+                priority
+                sizes="(min-width: 1024px) 28rem, (min-width: 640px) 24rem, 90vw"
+                className="h-[440px] w-full rounded-[1.5rem] object-cover sm:h-[520px]"
+              />
+              <figcaption className="absolute bottom-6 left-6 right-6 rounded-2xl border border-[var(--color-line)] bg-[rgba(252,248,240,0.92)] px-4 py-3 backdrop-blur-sm">
+                <p className="font-display text-lg font-semibold text-[var(--color-heading)]">
+                  {brand.name}
+                </p>
+                <p className="mt-1 inline-flex items-center gap-1.5 text-xs text-[var(--color-muted)]">
+                  <BadgeCheck className="h-3.5 w-3.5 text-[var(--color-gold-strong)]" />
+                  Consultora senior · Atención humana y confidencial
+                </p>
+              </figcaption>
+            </figure>
           </div>
         </div>
       </Container>

@@ -1,3 +1,4 @@
+import { Plus } from "lucide-react";
 import { faqs } from "@/lib/data";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -13,14 +14,15 @@ export function Faq() {
             description="Si tienes una duda que no está aquí, escríbeme por WhatsApp y la resolvemos en minutos."
           />
 
-          <div className="space-y-4">
+          <div className="space-y-3">
             {faqs.map((faq) => (
               <details
                 key={faq.question}
-                className="group rounded-[1.6rem] border border-white/10 bg-white/[0.06] p-5 backdrop-blur-md open:bg-white/[0.08]"
+                className="group rounded-[1.4rem] border border-[var(--color-line)] bg-[var(--color-ivory)] p-5 shadow-[var(--shadow-card)] open:bg-[var(--color-cream)]"
               >
-                <summary className="cursor-pointer list-none pr-6 text-base font-semibold text-white">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-base font-semibold text-[var(--color-heading)]">
                   {faq.question}
+                  <Plus className="h-4 w-4 shrink-0 text-[var(--color-gold-strong)] transition-transform group-open:rotate-45" />
                 </summary>
                 <p className="mt-4 text-sm leading-7 text-[var(--color-muted)]">{faq.answer}</p>
               </details>

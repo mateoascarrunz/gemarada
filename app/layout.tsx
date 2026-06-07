@@ -23,34 +23,35 @@ export const metadata: Metadata = {
     template: "%s | Krisna Gema Rada"
   },
   description:
-    "Consultora senior en administración gastronómica y contabilidad general remota. Costeo de recetas, análisis de menú, control de inventarios y reportes claros para restaurantes, cafeterías y pequeños negocios.",
+    "Consultora senior en administración gastronómica y contabilidad general remota. Optimización de recursos, costos de recetas, análisis de menús, inventarios y reportes claros para restaurantes, cafés, chefs, caterings y pequeños negocios.",
   keywords: [
-    "consultoría gastronómica",
+    "consultoría en administración gastronómica",
     "administración de restaurantes",
-    "costeo de recetas",
-    "análisis de menú",
-    "control de costos para restaurantes",
+    "costos de recetas",
+    "análisis de menús",
+    "optimización de recursos gastronómicos",
+    "inventarios para restaurantes",
     "contabilidad general remota",
     "contabilidad para pequeños negocios",
-    "inventarios para restaurantes",
-    "consultora administrativa Bolivia"
+    "Balance General y Estado de Resultados",
+    "consultora gastronómica Bolivia"
   ],
   authors: [{ name: "Krisna Gema Rada Rodríguez" }],
   creator: "Krisna Gema Rada Rodríguez",
   openGraph: {
-    title: "Krisna Gema Rada | Orden y rentabilidad para tu negocio gastronómico",
+    title: "Krisna Gema Rada | Orden y claridad para tu negocio gastronómico",
     description:
-      "Consultoría en administración gastronómica y contabilidad general remota. Costos bajo control, menú rentable y reportes claros, con acompañamiento cercano y remoto.",
+      "Consultoría en administración gastronómica y contabilidad general remota. Costos bajo control, menús rentables y reportes claros, con acompañamiento cercano y remoto.",
     url: "https://gemarada.com",
     siteName: "Krisna Gema Rada",
-    locale: "es_ES",
+    locale: "es_BO",
     type: "website"
   },
   twitter: {
     card: "summary_large_image",
     title: "Krisna Gema Rada | Consultoría gastronómica y contabilidad remota",
     description:
-      "Costos bajo control, menú rentable y reportes claros para restaurantes, cafeterías y pequeños negocios. Servicio 100% remoto."
+      "Costos bajo control, menús rentables y reportes claros para restaurantes, cafés y pequeños negocios. Más de 30 años de experiencia. Servicio 100% remoto."
   }
 };
 
@@ -60,8 +61,15 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html lang="es" suppressHydrationWarning>
-      <body className={`${manrope.variable} ${cormorant.variable} bg-[var(--color-ink)] text-white antialiased`}>
+    <html lang="es-BO" className="no-js" suppressHydrationWarning>
+      <body
+        className={`${manrope.variable} ${cormorant.variable} bg-[var(--color-cream)] text-[var(--color-text)] antialiased`}
+      >
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "document.documentElement.classList.remove('no-js');"
+          }}
+        />
         {children}
       </body>
     </html>
