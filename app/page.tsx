@@ -1,18 +1,23 @@
 import type { Metadata } from "next";
 import {
-  Benefits,
+  About,
+  AccountingDetail,
+  AuthorityStrip,
+  CaseStudies,
   Contact,
   Faq,
   Footer,
+  GastronomyDetail,
   Header,
   Hero,
   HowItWorks,
   IdealClients,
   Pricing,
+  Problem,
   Services,
-  Testimonials,
-  Trust
+  Testimonials
 } from "@/components/sections";
+import { brand, contact } from "@/lib/data";
 
 export const metadata: Metadata = {
   alternates: {
@@ -23,28 +28,65 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  name: "Gema Rada",
+  name: brand.name,
+  alternateName: brand.fullName,
   url: "https://gemarada.com",
   description:
-    "Consultora administrativa y gastronómica con más de 30 años de experiencia en apoyo contable remoto, organización administrativa y control de costos para pequeños negocios.",
+    "Consultoría en administración gastronómica y contabilidad general remota: costeo de recetas, análisis de menú, control de inventarios y reportes claros para restaurantes, cafeterías y pequeños negocios.",
   areaServed: "Servicio remoto",
   knowsAbout: [
-    "consultora administrativa",
-    "apoyo contable remoto",
     "consultoría gastronómica",
+    "costeo de recetas",
+    "análisis de menú",
     "control de costos para restaurantes",
-    "organización administrativa para emprendedores",
-    "asistencia contable para pequeños negocios"
+    "contabilidad general remota",
+    "inventarios computarizados",
+    "contabilidad para pequeños negocios"
   ],
+  founder: {
+    "@type": "Person",
+    name: brand.fullName,
+    jobTitle: brand.role
+  },
   contactPoint: [
     {
       "@type": "ContactPoint",
       contactType: "customer service",
-      telephone: "+34 600 000 000",
-      email: "hola@gemarada.com",
+      telephone: `+${contact.whatsappNumber}`,
+      email: contact.email,
       availableLanguage: ["Spanish"]
     }
-  ]
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Servicios",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        name: "Consultoría en administración gastronómica",
+        price: "10",
+        priceCurrency: "USD",
+        priceSpecification: {
+          "@type": "UnitPriceSpecification",
+          price: "10",
+          priceCurrency: "USD",
+          unitText: "hora"
+        }
+      },
+      {
+        "@type": "Offer",
+        name: "Contabilidad general remota",
+        price: "80",
+        priceCurrency: "USD",
+        priceSpecification: {
+          "@type": "UnitPriceSpecification",
+          price: "80",
+          priceCurrency: "USD",
+          unitText: "mes"
+        }
+      }
+    ]
+  }
 };
 
 export default function Home() {
@@ -57,13 +99,17 @@ export default function Home() {
       <main className="relative overflow-x-hidden">
         <Header />
         <Hero />
-        <Benefits />
-        <Services />
-        <HowItWorks />
-        <Pricing />
-        <Trust />
+        <AuthorityStrip />
+        <Problem />
         <IdealClients />
+        <Services />
+        <GastronomyDetail />
+        <AccountingDetail />
+        <HowItWorks />
+        <CaseStudies />
         <Testimonials />
+        <About />
+        <Pricing />
         <Faq />
         <Contact />
         <Footer />

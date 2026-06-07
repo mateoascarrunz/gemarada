@@ -4,13 +4,13 @@ import { SectionHeading } from "@/components/ui/section-heading";
 
 export function Faq() {
   return (
-    <section id="faq" className="py-20 sm:py-24">
+    <section id="faq" className="scroll-mt-24 py-20 sm:py-24">
       <Container>
         <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
           <SectionHeading
             eyebrow="Preguntas frecuentes"
-            title="Respuestas claras para reducir fricción antes del primer contacto."
-            description="La idea es que una persona interesada encuentre seguridad, facilidad y motivos suficientes para escribirte hoy."
+            title="Respuestas claras antes de escribirme."
+            description="Si tienes una duda que no está aquí, escríbeme por WhatsApp y la resolvemos en minutos."
           />
 
           <div className="space-y-4">

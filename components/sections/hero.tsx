@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { BadgeCheck, Sparkles } from "lucide-react";
+import { brand, heroHighlights, waMessages, whatsappLink } from "@/lib/data";
 import { Container } from "@/components/ui/container";
 import { ButtonLink } from "@/components/ui/button-link";
 
@@ -16,18 +17,20 @@ export function Hero() {
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.07] px-4 py-2 text-xs tracking-[0.24em] text-[var(--color-accent-cool)] uppercase backdrop-blur-md">
               <Sparkles className="h-3.5 w-3.5" />
-              Más de 30 años de experiencia
+              Consultora senior · {brand.shortRole}
             </div>
             <h1 className="mt-7 font-display text-5xl leading-[0.95] font-semibold tracking-[-0.03em] text-white sm:text-6xl lg:text-7xl">
-              Orden, claridad y apoyo experto para que tu negocio avance con más confianza.
+              Orden, rentabilidad y claridad para tu negocio gastronómico.
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-8 text-[var(--color-muted)] sm:text-xl">
-              Gema acompaña a pequeños negocios, emprendedores y proyectos gastronómicos con soluciones simples, personalizadas y realmente útiles para el día a día.
+              Ayudo a restaurantes, cafeterías, chefs y pequeños negocios a controlar sus costos,
+              entender sus números y crecer con bases sólidas. Consultoría gastronómica y
+              contabilidad general remota, con acompañamiento cercano.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <ButtonLink href="https://wa.me/34600000000?text=Hola%20Gema%2C%20quiero%20conocer%20tus%20servicios">
-                Contactar por WhatsApp
+              <ButtonLink href={whatsappLink(waMessages.diagnosis)}>
+                Conversemos por WhatsApp
               </ButtonLink>
               <ButtonLink href="#servicios" variant="secondary">
                 Ver servicios
@@ -35,11 +38,7 @@ export function Hero() {
             </div>
 
             <div className="mt-10 grid gap-4 sm:grid-cols-3">
-              {[
-                "Apoyo contable remoto",
-                "Control de costos",
-                "Atención cercana y práctica"
-              ].map((item) => (
+              {heroHighlights.map((item) => (
                 <div
                   key={item}
                   className="rounded-3xl border border-white/10 bg-white/[0.06] px-4 py-4 text-sm text-[var(--color-muted)] backdrop-blur-sm"
@@ -56,21 +55,24 @@ export function Hero() {
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.18),transparent_42%)]" />
               <div className="relative grid gap-4 sm:grid-cols-[1fr_auto] sm:items-end">
                 <div className="space-y-4 rounded-[1.6rem] border border-white/10 bg-[rgba(7,14,25,0.52)] p-5 backdrop-blur-md">
-                  <p className="text-xs uppercase tracking-[0.28em] text-[var(--color-accent-cool)]">Consultora Senior</p>
-                  <h2 className="font-display text-3xl font-semibold text-white">Gema</h2>
+                  <p className="text-xs uppercase tracking-[0.28em] text-[var(--color-accent-cool)]">
+                    Consultora senior
+                  </p>
+                  <h2 className="font-display text-3xl font-semibold text-white">Krisna Gema Rada</h2>
                   <p className="max-w-sm text-sm leading-7 text-[var(--color-muted)]">
-                    Especialista en organización administrativa y gestión gastronómica, con más de 30 años de experiencia optimizando operaciones, costos y estructura de negocios.
+                    Especialista en administración gastronómica y contabilidad general remota.
+                    Costos claros, inventarios ordenados y reportes que sí entiendes.
                   </p>
                   <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.07] px-3 py-2 text-sm text-white">
                     <BadgeCheck className="h-4 w-4 text-[var(--color-accent)]" />
-                    Atención humana y personalizada
+                    Atención humana y confidencial
                   </div>
                 </div>
 
                 <div className="overflow-hidden rounded-[1.8rem] border border-white/10 bg-[rgba(255,255,255,0.08)]">
                   <Image
-                    src="/images/gema.jpg"
-                    alt="Retrato de referencia para Gema"
+                    src="/images/krisna-portrait-hero.jpg"
+                    alt="Retrato de Krisna Gema Rada, consultora en administración gastronómica y contabilidad"
                     width={900}
                     height={1200}
                     priority

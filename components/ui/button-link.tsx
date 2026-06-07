@@ -15,9 +15,13 @@ export function ButtonLink({
   variant = "primary",
   className
 }: ButtonLinkProps) {
+  const isExternal = href.startsWith("http");
+
   return (
     <Link
       href={href}
+      target={isExternal ? "_blank" : undefined}
+      rel={isExternal ? "noopener noreferrer" : undefined}
       className={cn(
         "inline-flex min-h-[3rem] items-center justify-center rounded-full px-6 py-3 text-sm font-semibold tracking-[0.02em] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)]",
         variant === "primary" &&

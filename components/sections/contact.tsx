@@ -1,7 +1,14 @@
-import { Mail, MapPin, MessageCircle } from "lucide-react";
+import { Clock, Mail, MapPin, MessageCircle } from "lucide-react";
+import { contact, waMessages, whatsappLink } from "@/lib/data";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { ButtonLink } from "@/components/ui/button-link";
+
+const mailtoLink = `mailto:${contact.email}?subject=${encodeURIComponent(
+  "Consulta de servicios"
+)}&body=${encodeURIComponent(
+  "Hola Krisna, te cuento sobre mi negocio:\n\n- Tipo de negocio:\n- Lo que necesito:\n"
+)}`;
 
 export function Contact() {
   return (
@@ -11,16 +18,16 @@ export function Contact() {
           <div className="grid gap-10 p-6 sm:p-8 lg:grid-cols-[0.92fr_1.08fr] lg:p-10">
             <div>
               <SectionHeading
-                eyebrow="Contacto"
-                title="Escribe hoy y da el primer paso hacia una operación más ordenada."
-                description="Puedes contactar por WhatsApp, correo o dejar tus datos en el formulario. La experiencia debe sentirse simple, cercana y profesional desde el primer clic."
+                eyebrow="Hablemos"
+                title="Da el primer paso hacia una operación más ordenada y rentable."
+                description="Escríbeme por WhatsApp o correo y conversemos sobre tu negocio. La primera conversación es sin compromiso."
               />
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
-                <ButtonLink href="https://wa.me/34600000000?text=Hola%20Gema%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n">
-                  Contactar por WhatsApp
+                <ButtonLink href={whatsappLink(waMessages.diagnosis)}>
+                  Escríbeme por WhatsApp
                 </ButtonLink>
-                <ButtonLink href="mailto:hola@gemarada.com" variant="secondary">
+                <ButtonLink href={mailtoLink} variant="secondary">
                   Enviar correo
                 </ButtonLink>
               </div>
@@ -28,21 +35,21 @@ export function Contact() {
               <div className="mt-8 space-y-4">
                 <div className="flex items-center gap-3 text-sm text-[var(--color-muted)]">
                   <MessageCircle className="h-4 w-4 text-[var(--color-accent)]" />
-                  WhatsApp editable: +34 600 000 000
+                  WhatsApp: {contact.whatsappDisplay}
                 </div>
                 <div className="flex items-center gap-3 text-sm text-[var(--color-muted)]">
                   <Mail className="h-4 w-4 text-[var(--color-accent)]" />
-                  Correo editable: hola@gemarada.com
+                  Correo: {contact.email}
                 </div>
                 <div className="flex items-center gap-3 text-sm text-[var(--color-muted)]">
                   <MapPin className="h-4 w-4 text-[var(--color-accent)]" />
-                  Servicio remoto para negocios que buscan apoyo cercano
+                  {contact.location}
+                </div>
+                <div className="flex items-center gap-3 text-sm text-[var(--color-muted)]">
+                  <Clock className="h-4 w-4 text-[var(--color-accent)]" />
+                  Te respondo personalmente, normalmente el mismo día hábil.
                 </div>
               </div>
-
-              <p className="mt-8 max-w-lg text-sm leading-7 text-[var(--color-muted)]">
-                Punto de reemplazo recomendado: añade aquí una frase de tranquilidad o tiempo de respuesta estimado, por ejemplo “Te responderé personalmente en menos de 24 horas hábiles”.
-              </p>
             </div>
 
             <form className="rounded-[1.8rem] border border-white/10 bg-[rgba(9,17,31,0.72)] p-5 backdrop-blur-md sm:p-6">
@@ -52,6 +59,7 @@ export function Contact() {
                   <input
                     type="text"
                     name="name"
+                    autoComplete="name"
                     placeholder="Tu nombre"
                     className="h-12 w-full rounded-2xl border border-white/10 bg-white/[0.06] px-4 text-sm text-white outline-none placeholder:text-white/35 focus:border-[var(--color-accent)]"
                   />
@@ -61,6 +69,7 @@ export function Contact() {
                   <input
                     type="email"
                     name="email"
+                    autoComplete="email"
                     placeholder="tu@correo.com"
                     className="h-12 w-full rounded-2xl border border-white/10 bg-white/[0.06] px-4 text-sm text-white outline-none placeholder:text-white/35 focus:border-[var(--color-accent)]"
                   />
@@ -72,7 +81,7 @@ export function Contact() {
                 <input
                   type="text"
                   name="business"
-                  placeholder="Ej. cafetería, emprendimiento, restaurante"
+                  placeholder="Ej. cafetería, restaurante, emprendimiento"
                   className="h-12 w-full rounded-2xl border border-white/10 bg-white/[0.06] px-4 text-sm text-white outline-none placeholder:text-white/35 focus:border-[var(--color-accent)]"
                 />
               </label>
@@ -87,15 +96,13 @@ export function Contact() {
                 />
               </label>
 
-              <button
-                type="submit"
-                className="mt-6 inline-flex min-h-[3rem] w-full items-center justify-center rounded-full bg-[linear-gradient(135deg,rgba(248,208,184,1),rgba(242,191,159,0.86))] px-6 py-3 text-sm font-semibold text-slate-950 shadow-[0_20px_44px_rgba(242,191,159,0.22)] hover:-translate-y-0.5 hover:shadow-[0_26px_54px_rgba(242,191,159,0.3)]"
-              >
-                Enviar solicitud
-              </button>
+              <ButtonLink href={whatsappLink(waMessages.general)} className="mt-6 w-full">
+                Enviar por WhatsApp
+              </ButtonLink>
 
               <p className="mt-4 text-xs leading-6 text-[var(--color-muted)]">
-                Formulario visual listo para conectar con tu herramienta preferida. Puedes integrarlo luego con Formspree, Resend, EmailJS o una API propia.
+                El botón abre WhatsApp con un mensaje listo. Si prefieres un envío automático del
+                formulario, se puede conectar luego con Formspree, Resend o EmailJS.
               </p>
             </form>
           </div>
