@@ -9,6 +9,7 @@ import { ButtonLink } from "@/components/ui/button-link";
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -17,8 +18,21 @@ export function Header() {
     };
   }, [open]);
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 16);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-50 border-b border-[var(--color-line)] bg-[rgba(246,239,227,0.82)] backdrop-blur-xl">
+    <header
+      className={`sticky top-0 z-50 border-b transition-[background-color,box-shadow,border-color] duration-300 ease-out backdrop-blur-xl ${
+        scrolled
+          ? "border-[var(--color-line)] bg-[rgba(246,239,227,0.92)] shadow-[var(--shadow-card)]"
+          : "border-transparent bg-[rgba(246,239,227,0.82)]"
+      }`}
+    >
       <Container className="flex min-h-[4.5rem] items-center justify-between gap-4">
         <Link
           href="#inicio"

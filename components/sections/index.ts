@@ -1,13 +1,12 @@
 export { Header } from "./header";
 export { Hero } from "./hero";
 export { AuthorityStrip } from "./authority-strip";
-export { Problem } from "./problem";
-export { IdealClients } from "./ideal-clients";
+export { Signals } from "./signals";
 export { Services } from "./services";
 export { GastronomyDetail } from "./gastronomy-detail";
 export { AccountingDetail } from "./accounting-detail";
 export { HowItWorks } from "./how-it-works";
-export { CaseStudies } from "./case-studies";
+export { Trajectory } from "./trajectory";
 export { Outcomes } from "./outcomes";
 export { About } from "./about";
 export { Pricing } from "./pricing";

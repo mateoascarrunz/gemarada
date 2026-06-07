@@ -3,7 +3,6 @@ import {
   About,
   AccountingDetail,
   AuthorityStrip,
-  CaseStudies,
   Contact,
   Faq,
   Footer,
@@ -11,12 +10,12 @@ import {
   Header,
   Hero,
   HowItWorks,
-  IdealClients,
   MobileCta,
   Outcomes,
   Pricing,
-  Problem,
-  Services
+  Services,
+  Signals,
+  Trajectory
 } from "@/components/sections";
 import { brand, contact, faqs } from "@/lib/data";
 
@@ -116,13 +115,12 @@ export default function Home() {
         <Header />
         <Hero />
         <AuthorityStrip />
-        <Problem />
-        <IdealClients />
+        <Signals />
         <Services />
         <GastronomyDetail />
         <AccountingDetail />
         <HowItWorks />
-        <CaseStudies />
+        <Trajectory />
         <Outcomes />
         <About />
         <Pricing />

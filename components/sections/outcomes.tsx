@@ -5,28 +5,33 @@ import { SectionHeading } from "@/components/ui/section-heading";
 
 export function Outcomes() {
   return (
-    <section id="resultados" className="scroll-mt-24 py-20 sm:py-24">
+    <section id="resultados" className="scroll-mt-24 bg-[var(--color-sand)] py-20 sm:py-24">
       <Container>
         <SectionHeading
-          align="center"
           eyebrow={outcomesIntro.eyebrow}
           title={outcomesIntro.title}
           description={outcomesIntro.description}
         />
 
-        <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid gap-x-12 md:grid-cols-2">
           {outcomes.map((item, index) => (
-            <Reveal key={item.title} delay={(index % 3) * 90}>
-              <article className="h-full rounded-[1.6rem] border border-[var(--color-line)] bg-[var(--color-ivory)] p-6 shadow-[var(--shadow-card)] hover:-translate-y-1 hover:border-[var(--color-gold)]/40">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[var(--color-gold-tint)] text-[var(--color-gold-strong)]">
-                  <item.icon className="h-5 w-5" />
+            <Reveal key={item.title} delay={(index % 2) * 80}>
+              <div className="flex items-start gap-4 border-t border-[var(--color-line)] py-6">
+                <item.icon className="mt-0.5 h-5 w-5 shrink-0 text-[var(--color-gold-strong)]" />
+                <div>
+                  <h3 className="text-lg font-semibold text-[var(--color-heading)]">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-7 text-[var(--color-muted)]">
+                    {item.description}
+                  </p>
                 </div>
-                <h3 className="mt-5 text-lg font-semibold text-[var(--color-heading)]">{item.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-[var(--color-muted)]">{item.description}</p>
-              </article>
+              </div>
             </Reveal>
           ))}
         </div>
+
+        <p className="mt-12 border-l-2 border-[var(--color-gold)] pl-6 font-display text-2xl leading-snug text-[var(--color-heading)]">
+          No es más trabajo para ti. Es más claridad para decidir.
+        </p>
       </Container>
     </section>
   );

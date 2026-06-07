@@ -35,10 +35,7 @@ export function ContactForm() {
   }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="rounded-[1.8rem] border border-[var(--color-on-dark-line)] bg-white/[0.04] p-5 backdrop-blur-md sm:p-6"
-    >
+    <form onSubmit={handleSubmit} className="lg:pt-2">
       <div className="grid gap-4 sm:grid-cols-2">
         <label className="block">
           <span className="mb-2 block text-sm font-medium text-[var(--color-on-dark)]">Nombre</span>

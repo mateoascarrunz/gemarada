@@ -63,7 +63,7 @@ export default function RootLayout({
   return (
     <html lang="es-BO" className="no-js" suppressHydrationWarning>
       <body
-        className={`${manrope.variable} ${cormorant.variable} bg-[var(--color-cream)] text-[var(--color-text)] antialiased`}
+        className={`${manrope.variable} ${cormorant.variable} text-[var(--color-text)] antialiased`}
       >
         <script
           dangerouslySetInnerHTML={{

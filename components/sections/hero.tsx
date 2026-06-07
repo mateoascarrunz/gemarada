@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, BadgeCheck, Sparkles } from "lucide-react";
-import { brand, services, waMessages, whatsappLink } from "@/lib/data";
+import { BadgeCheck } from "lucide-react";
+import { brand, hero, heroStats, waMessages, whatsappLink } from "@/lib/data";
 import { Container } from "@/components/ui/container";
 import { ButtonLink } from "@/components/ui/button-link";
 
@@ -14,60 +14,74 @@ export function Hero() {
       </div>
 
       <Container className="relative">
-        <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
+        <div className="grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14">
           <div className="max-w-2xl">
-            <p className="inline-flex items-center gap-2 rounded-full border border-[var(--color-line)] bg-[var(--color-ivory)] px-4 py-2 text-xs font-medium uppercase tracking-[0.2em] text-[var(--color-gold-strong)]">
-              <Sparkles className="h-3.5 w-3.5" />
-              Consultora senior · +30 años de experiencia
+            <p className="inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.28em] text-[var(--color-gold-strong)]">
+              <span className="h-px w-8 bg-current opacity-60" />
+              {hero.eyebrow}
             </p>
 
-            <h1 className="mt-6 font-display text-5xl font-semibold leading-[0.98] tracking-[-0.02em] text-[var(--color-heading)] sm:text-6xl lg:text-7xl">
-              Orden y claridad para que tu negocio funcione mejor.
+            <h1 className="mt-6 font-display font-semibold tracking-[-0.02em] text-[var(--color-heading)] [font-size:clamp(2.75rem,7vw,5.25rem)] [line-height:0.95]">
+              {hero.titleLead}{" "}
+              <span className="text-[var(--color-gold-strong)]">{hero.titleAccent}</span>
             </h1>
 
             <p className="mt-6 max-w-xl text-lg leading-8 text-[var(--color-muted)] sm:text-xl">
-              Consultoría en administración gastronómica y contabilidad general remota para
-              restaurantes, cafés, chefs, caterings, emprendedores y pequeños negocios que necesitan
-              estructura, control y decisiones más claras.
+              {hero.subtitle}
+            </p>
+
+            <p className="mt-5 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-[var(--color-muted)]">
+              {hero.dualServices.map((service, index) => (
+                <span key={service.href} className="inline-flex items-center gap-2">
+                  {index > 0 ? <span className="text-[var(--color-line)]">·</span> : null}
+                  <Link
+                    href={service.href}
+                    className="font-medium text-[var(--color-heading)] underline decoration-[var(--color-gold)]/50 decoration-1 underline-offset-4 hover:text-[var(--color-gold-strong)] hover:decoration-[var(--color-gold)]"
+                  >
+                    {service.label}
+                  </Link>
+                </span>
+              ))}
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <ButtonLink href={whatsappLink(waMessages.diagnosis)}>Escríbeme por WhatsApp</ButtonLink>
+              <ButtonLink href={whatsappLink(waMessages.diagnosis)}>{"Escríbeme por WhatsApp"}</ButtonLink>
               <ButtonLink href="#servicios" variant="secondary">
                 Ver servicios
               </ButtonLink>
             </div>
 
-            <div className="mt-10 grid gap-3 sm:grid-cols-2">
-              {services.map((service) => (
-                <Link
-                  key={service.id}
-                  href={service.anchor}
-                  className="group rounded-2xl border border-[var(--color-line)] bg-[var(--color-ivory)] p-4 shadow-[var(--shadow-card)] hover:-translate-y-0.5 hover:border-[var(--color-gold)]/40"
+            <dl className="mt-10 flex flex-wrap items-stretch gap-x-8 gap-y-4 border-t border-[var(--color-line)] pt-6">
+              {heroStats.map((stat, index) => (
+                <div
+                  key={stat.label}
+                  className={
+                    index > 0
+                      ? "border-l border-[var(--color-line)] pl-8 first:border-l-0 first:pl-0"
+                      : ""
+                  }
                 >
-                  <div className="flex items-center gap-2 text-[var(--color-gold-strong)]">
-                    <service.icon className="h-4 w-4" />
-                    <span className="text-xs font-semibold uppercase tracking-[0.14em]">
-                      {service.id === "gastronomia" ? "Administración gastronómica" : "Contabilidad remota"}
-                    </span>
-                  </div>
-                  <p className="mt-2 flex items-baseline gap-1">
-                    <span className="font-display text-2xl font-semibold text-[var(--color-heading)]">
-                      {service.price}
-                    </span>
-                    <span className="text-sm text-[var(--color-muted)]">{service.pricePeriod}</span>
-                  </p>
-                  <span className="mt-1 inline-flex items-center gap-1 text-sm text-[var(--color-muted)] group-hover:text-[var(--color-gold-strong)]">
-                    Ver detalle <ArrowRight className="h-3.5 w-3.5" />
-                  </span>
-                </Link>
+                  <dt className="font-display text-2xl font-semibold leading-none text-[var(--color-heading)] sm:text-3xl">
+                    {stat.value}
+                  </dt>
+                  <dd className="mt-1.5 text-xs uppercase tracking-[0.14em] text-[var(--color-muted)]">
+                    {stat.label}
+                  </dd>
+                </div>
               ))}
-            </div>
+            </dl>
           </div>
 
           <div className="relative mx-auto w-full max-w-md">
+            <span
+              aria-hidden
+              className="pointer-events-none absolute -right-6 -top-12 hidden select-none font-display text-[16rem] leading-none text-[var(--color-gold)]/[0.07] lg:block"
+            >
+              {brand.monogram}
+            </span>
+
             <div className="absolute -inset-4 -z-10 rounded-[2.4rem] bg-[radial-gradient(circle_at_30%_20%,rgba(169,119,46,0.16),transparent_60%)]" />
-            <figure className="relative overflow-hidden rounded-[2rem] border border-[var(--color-line)] bg-[var(--color-ivory)] p-3 shadow-[var(--shadow-soft)]">
+            <figure className="group relative overflow-hidden rounded-[1.75rem] border border-[var(--color-line)] bg-[var(--color-ivory)] p-2 shadow-[var(--shadow-soft)] transition-transform duration-500 ease-out hover:-translate-y-1">
               <Image
                 src="/images/krisna-portrait-hero.jpg"
                 alt={`Retrato de ${brand.fullName}, ${brand.role.toLowerCase()}`}
@@ -75,18 +89,19 @@ export function Hero() {
                 height={1100}
                 priority
                 sizes="(min-width: 1024px) 28rem, (min-width: 640px) 24rem, 90vw"
-                className="h-[440px] w-full rounded-[1.5rem] object-cover sm:h-[520px]"
+                className="h-[440px] w-full rounded-[1.4rem] object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.03] sm:h-[520px]"
               />
-              <figcaption className="absolute bottom-6 left-6 right-6 rounded-2xl border border-[var(--color-line)] bg-[rgba(252,248,240,0.92)] px-4 py-3 backdrop-blur-sm">
-                <p className="font-display text-lg font-semibold text-[var(--color-heading)]">
-                  {brand.name}
-                </p>
-                <p className="mt-1 inline-flex items-center gap-1.5 text-xs text-[var(--color-muted)]">
-                  <BadgeCheck className="h-3.5 w-3.5 text-[var(--color-gold-strong)]" />
-                  Consultora senior · Atención humana y confidencial
-                </p>
-              </figcaption>
             </figure>
+
+            <figcaption className="absolute -bottom-4 left-4 inline-flex items-center gap-2.5 rounded-2xl border border-[var(--color-line)] bg-[rgba(252,248,240,0.94)] px-4 py-3 shadow-[var(--shadow-card)] backdrop-blur-sm">
+              <BadgeCheck className="h-5 w-5 shrink-0 text-[var(--color-gold-strong)]" />
+              <span>
+                <span className="block font-display text-base font-semibold leading-tight text-[var(--color-heading)]">
+                  {brand.name}
+                </span>
+                <span className="block text-xs text-[var(--color-muted)]">Consultora senior</span>
+              </span>
+            </figcaption>
           </div>
         </div>
       </Container>
