@@ -18,31 +18,40 @@ const cormorant = Cormorant_Garamond({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://gemarada.com"),
-  title: "Gema Rada | Consultora administrativa y gastronómica para pequeños negocios",
+  title: {
+    default: "Krisna Gema Rada | Consultoría gastronómica y contabilidad remota",
+    template: "%s | Krisna Gema Rada"
+  },
   description:
-    "Consultora administrativa y gastronómica con más de 30 años de experiencia. Apoyo contable remoto, control de costos y organización administrativa para emprendedores, restaurantes y pequeños negocios.",
+    "Consultora senior en administración gastronómica y contabilidad general remota. Optimización de recursos, costos de recetas, análisis de menús, inventarios y reportes claros para restaurantes, cafés, chefs, caterings y pequeños negocios.",
   keywords: [
-    "consultora administrativa",
-    "apoyo contable remoto",
-    "consultoría gastronómica",
-    "control de costos para restaurantes",
-    "organización administrativa para emprendedores",
-    "asistencia contable para pequeños negocios"
+    "consultoría en administración gastronómica",
+    "administración de restaurantes",
+    "costos de recetas",
+    "análisis de menús",
+    "optimización de recursos gastronómicos",
+    "inventarios para restaurantes",
+    "contabilidad general remota",
+    "contabilidad para pequeños negocios",
+    "Balance General y Estado de Resultados",
+    "consultora gastronómica Bolivia"
   ],
+  authors: [{ name: "Krisna Gema Rada Rodríguez" }],
+  creator: "Krisna Gema Rada Rodríguez",
   openGraph: {
-    title: "Gema Rada | Orden, control y acompañamiento para hacer crecer tu negocio",
+    title: "Krisna Gema Rada | Orden y claridad para tu negocio gastronómico",
     description:
-      "Servicios personalizados de apoyo administrativo, contable y consultoría gastronómica para pequeños negocios y restaurantes.",
+      "Consultoría en administración gastronómica y contabilidad general remota. Costos bajo control, menús rentables y reportes claros, con acompañamiento cercano y remoto.",
     url: "https://gemarada.com",
-    siteName: "Gema Rada",
-    locale: "es_ES",
+    siteName: "Krisna Gema Rada",
+    locale: "es_BO",
     type: "website"
   },
   twitter: {
     card: "summary_large_image",
-    title: "Gema Rada | Consultora administrativa y gastronómica",
+    title: "Krisna Gema Rada | Consultoría gastronómica y contabilidad remota",
     description:
-      "Más de 30 años ayudando a pequeños negocios, emprendedores y restaurantes a trabajar con orden y mejores decisiones."
+      "Costos bajo control, menús rentables y reportes claros para restaurantes, cafés y pequeños negocios. Más de 30 años de experiencia. Servicio 100% remoto."
   }
 };
 
@@ -52,8 +61,15 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html lang="es" suppressHydrationWarning>
-      <body className={`${manrope.variable} ${cormorant.variable} bg-[var(--color-ink)] text-white antialiased`}>
+    <html lang="es-BO" className="no-js" suppressHydrationWarning>
+      <body
+        className={`${manrope.variable} ${cormorant.variable} text-[var(--color-text)] antialiased`}
+      >
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "document.documentElement.classList.remove('no-js');"
+          }}
+        />
         {children}
       </body>
     </html>

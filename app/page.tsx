@@ -1,18 +1,23 @@
 import type { Metadata } from "next";
 import {
-  Benefits,
+  About,
+  AccountingDetail,
+  AuthorityStrip,
   Contact,
   Faq,
   Footer,
+  GastronomyDetail,
   Header,
   Hero,
   HowItWorks,
-  IdealClients,
+  MobileCta,
+  Outcomes,
   Pricing,
   Services,
-  Testimonials,
-  Trust
+  Signals,
+  Trajectory
 } from "@/components/sections";
+import { brand, contact, faqs } from "@/lib/data";
 
 export const metadata: Metadata = {
   alternates: {
@@ -20,31 +25,79 @@ export const metadata: Metadata = {
   }
 };
 
-const jsonLd = {
+const professionalServiceLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  name: "Gema Rada",
+  name: brand.name,
+  alternateName: brand.fullName,
   url: "https://gemarada.com",
+  image: "https://gemarada.com/images/gema.jpg",
   description:
-    "Consultora administrativa y gastronómica con más de 30 años de experiencia en apoyo contable remoto, organización administrativa y control de costos para pequeños negocios.",
+    "Consultoría en administración gastronómica y contabilidad general remota: optimización de recursos, costos de recetas, análisis de menús, inventarios y reportes claros para restaurantes, cafés, chefs, caterings y pequeños negocios.",
   areaServed: "Servicio remoto",
   knowsAbout: [
-    "consultora administrativa",
-    "apoyo contable remoto",
-    "consultoría gastronómica",
-    "control de costos para restaurantes",
-    "organización administrativa para emprendedores",
-    "asistencia contable para pequeños negocios"
+    "administración gastronómica",
+    "costos de recetas",
+    "análisis de menús",
+    "optimización de recursos",
+    "inventarios computarizados",
+    "contabilidad general remota",
+    "Balance General",
+    "Estado de Resultados"
   ],
+  founder: {
+    "@type": "Person",
+    name: brand.fullName,
+    jobTitle: brand.role
+  },
   contactPoint: [
     {
       "@type": "ContactPoint",
       contactType: "customer service",
-      telephone: "+34 600 000 000",
-      email: "hola@gemarada.com",
+      telephone: `+${contact.whatsappNumber}`,
+      email: contact.email,
       availableLanguage: ["Spanish"]
     }
-  ]
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Servicios",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        name: "Consultoría en administración gastronómica",
+        priceSpecification: {
+          "@type": "UnitPriceSpecification",
+          price: "10",
+          priceCurrency: "USD",
+          unitText: "hora"
+        }
+      },
+      {
+        "@type": "Offer",
+        name: "Contabilidad general remota",
+        priceSpecification: {
+          "@type": "UnitPriceSpecification",
+          price: "80",
+          priceCurrency: "USD",
+          unitText: "mes"
+        }
+      }
+    ]
+  }
+};
+
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer
+    }
+  }))
 };
 
 export default function Home() {
@@ -52,22 +105,30 @@ export default function Home() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(professionalServiceLd) }}
       />
-      <main className="relative overflow-x-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
+      />
+      <main className="relative overflow-x-hidden pb-20 lg:pb-0">
         <Header />
         <Hero />
-        <Benefits />
+        <AuthorityStrip />
+        <Signals />
         <Services />
+        <GastronomyDetail />
+        <AccountingDetail />
         <HowItWorks />
+        <Trajectory />
+        <Outcomes />
+        <About />
         <Pricing />
-        <Trust />
-        <IdealClients />
-        <Testimonials />
         <Faq />
         <Contact />
         <Footer />
       </main>
+      <MobileCta />
     </>
   );
 }

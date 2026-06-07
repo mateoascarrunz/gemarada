@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" preserveAspectRatio="xMidYMid slice" role="img">
+  <defs>
+    <linearGradient id="g2" x1="0" y1="0" x2="0.6" y2="1">
+      <stop offset="0" stop-color="#f3ead9"/>
+      <stop offset="0.6" stop-color="#e4d3b6"/>
+      <stop offset="1" stop-color="#c2a877"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="1000" fill="url(#g2)"/>
+  <g stroke="#6e5634" stroke-opacity="0.22" stroke-width="2">
+    <line x1="120" y1="300" x2="680" y2="300"/>
+    <line x1="120" y1="380" x2="680" y2="380"/>
+    <line x1="120" y1="460" x2="680" y2="460"/>
+    <line x1="120" y1="540" x2="680" y2="540"/>
+    <line x1="120" y1="620" x2="680" y2="620"/>
+    <line x1="120" y1="700" x2="680" y2="700"/>
+  </g>
+  <rect x="120" y="330" width="280" height="22" rx="6" fill="#a9772e" fill-opacity="0.55"/>
+  <rect x="120" y="410" width="200" height="22" rx="6" fill="#6e5634" fill-opacity="0.35"/>
+  <rect x="120" y="490" width="330" height="22" rx="6" fill="#a9772e" fill-opacity="0.45"/>
+  <rect x="120" y="570" width="160" height="22" rx="6" fill="#6e5634" fill-opacity="0.3"/>
+  <rect x="120" y="650" width="240" height="22" rx="6" fill="#a9772e" fill-opacity="0.5"/>
+  <circle cx="600" cy="540" r="70" fill="none" stroke="#3a2a1b" stroke-opacity="0.3" stroke-width="3"/>
+  <path d="M600 490 L600 540 L640 560" fill="none" stroke="#3a2a1b" stroke-opacity="0.4" stroke-width="4" stroke-linecap="round"/>
+</svg>
