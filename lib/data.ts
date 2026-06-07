@@ -104,17 +104,38 @@ export const signals = {
   eyebrow: "Lo que veo todos los días",
   title: "Señales de que tu negocio necesita orden",
   description:
-    "Si reconoces dos o tres de estas situaciones, no es falta de esfuerzo: es falta de estructura.",
-  items: [
-    "Costos que no se ven con claridad",
-    "Inventarios que se pierden o dependen de la memoria",
-    "Menús sin costos reales por receta",
-    "Equipo trabajando sin procesos escritos",
-    "Mucho trabajo diario y poca visión financiera",
-    "Cuentas personales y del negocio mezcladas",
-    "Decisiones tomadas sin reportes claros"
-  ],
-  closing: "Ordenar no es complicar. Es ver con claridad y decidir mejor."
+    "No es falta de esfuerzo: es falta de estructura. Revisa cada área y marca lo que reconoces.",
+  groups: [
+    {
+      category: "Operación",
+      icon: Boxes,
+      items: [
+        "Inventarios que dependen de la memoria",
+        "Procesos que no están escritos",
+        "Equipo que trabaja sin criterios claros"
+      ]
+    },
+    {
+      category: "Costos",
+      icon: ClipboardCheck,
+      items: [
+        "Menús sin costos reales por receta",
+        "Gastos que se repiten sin revisión",
+        "Recursos que se pierden sin control"
+      ]
+    },
+    {
+      category: "Claridad financiera",
+      icon: LineChart,
+      items: [
+        "Cuentas personales y del negocio mezcladas",
+        "Reportes que no muestran la realidad",
+        "Decisiones tomadas sin números claros"
+      ]
+    }
+  ] as { category: string; icon: LucideIcon; items: string[] }[],
+  closing: "Si reconoces 2 o más señales, es momento de ordenar.",
+  ctaMessage: waMessages.diagnosis
 };
 
 /* -------------------------------------------------------------------------- */
@@ -161,7 +182,7 @@ export const services: {
     eyebrow: "Servicio 1",
     title: "Administración gastronómica",
     forWho: "Para restaurantes, cafés, chefs, caterings y emprendedores con buena cocina.",
-    problem: "Pongo orden en costos, inventarios y procesos para que el negocio sea rentable.",
+    problem: "Ordeno costos, inventarios y procesos para que tu cocina sea rentable.",
     includes: [
       "Costos de recetas y análisis de menús",
       "Inventarios computarizados y optimización de recursos",
@@ -290,23 +311,23 @@ export const accountingDetail = {
 export const steps = [
   {
     number: "01",
-    title: "Conversación inicial",
-    description: "Hablamos de tu negocio y lo que quieres lograr. Sin compromiso."
+    title: "Diagnóstico",
+    description: "Conversamos sobre tu negocio y firmamos confidencialidad antes de ver tu información."
   },
   {
     number: "02",
-    title: "Acuerdo y confidencialidad",
-    description: "Definimos el alcance y firmamos un acuerdo antes de recibir tu información."
+    title: "Orden",
+    description: "Pongo en orden tus costos, inventarios y cuentas en información clara."
   },
   {
     number: "03",
-    title: "Orden y registro",
-    description: "Organizo tus costos, inventarios o cuentas en información clara."
+    title: "Implementación",
+    description: "Dejamos manuales, reportes y criterios listos para que tu equipo los use."
   },
   {
     number: "04",
-    title: "Reportes y recomendaciones",
-    description: "Recibes reportes claros y recomendaciones prácticas, con seguimiento cercano."
+    title: "Seguimiento",
+    description: "Acompañamiento cercano y continuo para sostener el orden y decidir mejor."
   }
 ];
 
@@ -357,27 +378,48 @@ export const trajectoryEras: { range: string; title: string; summary: string }[]
 /* Featured experience                                                          */
 /* -------------------------------------------------------------------------- */
 
-export const experienceHighlight = {
-  eyebrow: "Experiencia destacada",
+export const featuredCase = {
+  eyebrow: "Caso destacado",
   name: "Gastro Suisse · Restaurant Chalet La Suisse",
-  scope: "Gerencia general y administrativa",
+  label: "Gerencia y crecimiento operativo",
+  era: "1991–2022",
   description:
-    "Desarrollo del negocio, optimización de recursos, fidelización de clientes, excelencia en el servicio, posicionamiento de marca y participación en el proceso de transición del negocio.",
+    "Recuperación administrativa, orden contable y, más tarde, gerencia general: desarrollo del negocio, optimización de recursos, fidelización de clientes, posicionamiento de marca y acompañamiento en la transición del negocio.",
   image: "/images/trayectoria-gastronomica.svg",
   imageAlt: "Gerencia general y administrativa en Chalet La Suisse"
 };
 
-export const otherEngagements: { name: string; scope: string }[] = [
-  { name: "La Pequeña de Alfredo", scope: "Apertura integral" },
+export const selectedHighlights: { name: string; label: string; detail: string }[] = [
   {
-    name: "Catering para embajadas y cuerpo diplomático · con el Chef Marco Bonifaz",
-    scope: "Coordinación y servicio de eventos"
+    name: "La Gitana Bar-Restaurante",
+    label: "Concepto y apertura",
+    detail: "Creación del concepto y puesta en marcha del negocio."
   },
-  { name: "Plaza Gastronómica El Bosque", scope: "Operación y optimización" },
-  { name: "La Gitana Bar-Restaurante", scope: "Creación de concepto" },
-  { name: "Rock and Fellers", scope: "Implementación de franquicia" },
-  { name: "Restaurant La Mostaza", scope: "Orden financiero" },
-  { name: "Chef independiente · Querétaro", scope: "Contabilidad de catering" }
+  {
+    name: "La Pequeña de Alfredo",
+    label: "Concepto y apertura",
+    detail: "Apertura integral, del montaje a la operación."
+  },
+  {
+    name: "Rock and Fellers",
+    label: "Franquicia y servicio",
+    detail: "Implementación de franquicia y estándares de servicio."
+  },
+  {
+    name: "Catering para embajadas y cuerpo diplomático",
+    label: "Catering diplomático",
+    detail: "Coordinación y servicio de eventos, con el Chef Marco Bonifaz."
+  },
+  {
+    name: "Plaza Gastronómica El Bosque",
+    label: "Optimización y capacitación",
+    detail: "Operación, optimización de recursos y capacitación de equipo."
+  },
+  {
+    name: "Restaurant La Mostaza",
+    label: "Orden financiero",
+    detail: "Orden contable y claridad financiera del negocio."
+  }
 ];
 
 /* -------------------------------------------------------------------------- */

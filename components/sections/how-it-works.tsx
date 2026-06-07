@@ -39,45 +39,68 @@ export function HowItWorks() {
           ))}
         </ol>
 
-        {/* Desktop: connected staircase with vertical offsets */}
-        <div className="relative mt-16 hidden lg:block">
-          <span
-            aria-hidden
-            className="pointer-events-none absolute left-0 right-0 top-[1.1rem] h-px bg-[var(--color-on-dark-line)]"
-          />
-          <ol className="grid grid-cols-4 gap-8">
-            {steps.map((step, index) => (
-              <Reveal
-                key={step.number}
-                delay={index * 90}
-                className={
-                  index === 1
-                    ? "mt-10"
-                    : index === 2
-                      ? "mt-20"
-                      : index === 3
-                        ? "mt-32"
-                        : ""
-                }
-              >
-                <li className="relative pt-10">
-                  <span
-                    aria-hidden
-                    className="absolute left-0 top-[0.55rem] h-3 w-3 rounded-full bg-[var(--color-gold)] ring-4 ring-[var(--color-espresso)]"
-                  />
-                  <span className="font-display text-5xl leading-none text-[var(--color-gold)]">
-                    {step.number}
-                  </span>
-                  <h3 className="mt-6 text-xl font-semibold text-[var(--color-on-dark)]">
-                    {step.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-7 text-[var(--color-on-dark-muted)]">
-                    {step.description}
-                  </p>
-                </li>
-              </Reveal>
-            ))}
-          </ol>
+        {/* Desktop: alternating horizontal timeline — nodes centered on ONE gold rail */}
+        <div className="mt-20 hidden lg:block">
+          <div className="relative">
+            {/* Center rail, fading at both ends; nodes (middle grid row) sit exactly on it. */}
+            <span
+              aria-hidden
+              className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-[linear-gradient(90deg,transparent,rgba(199,154,78,0.55)_14%,rgba(199,154,78,0.55)_86%,transparent)]"
+            />
+            <ol className="grid grid-cols-4">
+              {steps.map((step, index) => {
+                const above = index % 2 === 0;
+                const block = (
+                  <div className="mx-auto max-w-[15rem] text-center">
+                    <span className="font-display text-5xl leading-none text-[var(--color-gold)]">
+                      {step.number}
+                    </span>
+                    <h3 className="mt-4 text-lg font-semibold text-[var(--color-on-dark)]">
+                      {step.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-6 text-[var(--color-on-dark-muted)]">
+                      {step.description}
+                    </p>
+                  </div>
+                );
+                const tick = (
+                  <span aria-hidden className="mx-auto block h-6 w-px bg-[var(--color-gold)]/40" />
+                );
+
+                return (
+                  <Reveal key={step.number} delay={index * 90} className="min-h-[19rem]">
+                    <li className="grid h-full grid-rows-[1fr_auto_1fr]">
+                      {/* top cell */}
+                      <div className="flex flex-col justify-end pb-3">
+                        {above ? (
+                          <>
+                            {block}
+                            {tick}
+                          </>
+                        ) : null}
+                      </div>
+                      {/* node row (vertical centre = rail) */}
+                      <div className="flex items-center justify-center">
+                        <span
+                          aria-hidden
+                          className="h-3.5 w-3.5 rounded-full border-2 border-[var(--color-gold)] bg-[var(--color-espresso)] ring-4 ring-[var(--color-espresso)]"
+                        />
+                      </div>
+                      {/* bottom cell */}
+                      <div className="flex flex-col justify-start pt-3">
+                        {!above ? (
+                          <>
+                            {tick}
+                            {block}
+                          </>
+                        ) : null}
+                      </div>
+                    </li>
+                  </Reveal>
+                );
+              })}
+            </ol>
+          </div>
         </div>
 
         <div className="mt-16 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
